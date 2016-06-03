@@ -9,3 +9,8 @@ config.http = {
 config.flickr = {
   apiKey: 'f613a247687d80e07ab320c36cd02adb'
 };
+config.cloudinary = {
+  cloudName: 'meted-co',
+  apiKey: '795426656763274',
+  apiSecret: 'UTuY7VpX2feRBzUzgFcVoaHU6Oc'
+}
