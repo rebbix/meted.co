@@ -1,10 +1,11 @@
 var bunyan = require('bunyan');
 var http = require('http');
+var r = require('rethinkdbdash')({db: "meted"});
 var config = require('./config');
 var createApp = require('./lib/app');
 
 var logger = bunyan.createLogger({name: 'meted', level: config.logLevel})
-var app = createApp(config, logger);
+var app = createApp(config, logger, r);
 
 var server = http.createServer(app);
 
