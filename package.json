@@ -1,0 +1,30 @@
+{
+  "name": "meted.co",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js | bunyan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soplakanets/meted.co.git"
+  },
+  "author": "Meted.co Team <metedapp@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/soplakanets/meted.co/issues"
+  },
+  "homepage": "https://meted.co",
+  "dependencies": {
+    "bluebird": "^3.4.0",
+    "bunyan": "^1.8.1",
+    "cloudinary": "^1.3.1",
+    "express": "^4.13.4",
+    "lodash": "^4.13.1",
+    "request-promise": "^3.0.0",
+    "rethinkdbdash": "^2.3.6"
+  },
+  "devDependencies": {
+    "errorhandler": "^1.4.3"
+  }
+}
