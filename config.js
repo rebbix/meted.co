@@ -6,3 +6,6 @@ config.http = {
   port: process.env.PORT || 5000,
   host: process.env.HOST || 'localhost'
 };
+config.flickr = {
+  apiKey: 'f613a247687d80e07ab320c36cd02adb'
+};

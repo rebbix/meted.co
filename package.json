@@ -16,8 +16,11 @@
   },
   "homepage": "https://meted.co",
   "dependencies": {
+    "bluebird": "^3.4.0",
     "bunyan": "^1.8.1",
-    "express": "^4.13.4"
+    "express": "^4.13.4",
+    "lodash": "^4.13.1",
+    "request-promise": "^3.0.0"
   },
   "devDependencies": {
     "errorhandler": "^1.4.3"
