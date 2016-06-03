@@ -1,0 +1,15 @@
+{
+  "name": "meted.co",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soplakanets/meted.co.git"
+  },
+  "author": "Meted.co Team <metedapp@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/soplakanets/meted.co/issues"
+  },
+  "homepage": "https://meted.co"
+}
