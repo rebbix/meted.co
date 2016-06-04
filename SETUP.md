@@ -4,6 +4,7 @@
 r.dbCreate("meted");
 r.db("meted").tableCreate("photo");
 r.db("meted").table("photo").indexCreate("flickrId");
+r.db("meted").table("photo").indexCreate("viewCount");
 ```
 
 *Production only*
@@ -22,5 +23,5 @@ env HOST=localhost PORT=5000 NODE_ENV=production TINYEYE_PUBLIC_KEY='jAYP,_sYFZQ
 ```
 git pull
 npm install
-
+sudo restart meted-app
 ```
