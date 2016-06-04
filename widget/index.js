@@ -14,9 +14,9 @@ if (typeof init === "undefined") {
         <textarea class="meted__share-code"><figure data-meted="true" data-meted-image-id="${imageId}"><script src="${widgetURL}"></script></figure></textarea>
         <br/>
         <button class="meted__copy-button">COPY CODE</button>
-        
+
         <ul class="meted__advantages">
-          <li class="meted__advantage">Network takedown tracking</li>      
+          <li class="meted__advantage">Network takedown tracking</li>
           <li class="meted__advantage">
             Licence snaphot:&nbsp;
             <a target="_blank" href="${data.license.url}">${data.license.shortName}</a>
@@ -30,12 +30,12 @@ if (typeof init === "undefined") {
     `;
     var closeButton = document.createElement("div");
     closeButton.className = "meted__close";
-    closeButton.innerHTML = `<svg width="22" height="22" viewBox="2508 95 22 22" xmlns="http://www.w3.org/2000/svg">        <path 
-            fill="none" 
-            fill-rule="evenodd" 
-            stroke-linecap="square" 
-            stroke="#FFF" 
-            stroke-width="3" 
+    closeButton.innerHTML = `<svg width="22" height="22" viewBox="2508 95 22 22" xmlns="http://www.w3.org/2000/svg">        <path
+            fill="none"
+            fill-rule="evenodd"
+            stroke-linecap="square"
+            stroke="#FFF"
+            stroke-width="3"
             d="M2527.526 97.474l-16.747 16.747M2527.526 114.22l-16.747-16.746"/>
         </svg>`;
     closeButton.onclick = function () {this.parentNode.parentNode.removeChild(this.parentNode);};
@@ -53,7 +53,7 @@ if (typeof init === "undefined") {
   let css = `
     .meted {}
     .meted canvas {width: 100%;}
-    .meted__copyright {    
+    .meted__copyright {
       font-family: sans-serif;
       font-size: 13px;
       color: #999999;
@@ -69,16 +69,16 @@ if (typeof init === "undefined") {
     }
     .meted__share-buttons-block {
       display: none;
-    }    
+    }
     .meted:hover .meted__share-buttons-block {
       display: block;
       position: absolute;
-      
+
       text-align: right;
       right: 20px;
       bottom: 31px;
     }
-        
+
     .meted__share {
       cursor: pointer;
       background: rgba(0,0,0, .70);
@@ -95,7 +95,7 @@ if (typeof init === "undefined") {
       vertical-align: middle;
       height: 0px;
     }
-    
+
     .meted__contact {
       cursor: pointer;
       line-height: 36px;
@@ -120,42 +120,42 @@ if (typeof init === "undefined") {
       font-family: sans-serif;
       text-align: center;
     }
-    
+
     .meted__share-title {
       font-size: 30px;
       color: #FFFFFF;
       letter-spacing: -0.15px;
       margin: 0 0 0 0;
     }
-    
-    .meted__share-description {    
+
+    .meted__share-description {
       opacity: 0.8;
       font-size: 20px;
       letter-spacing: -0.1px;
     }
-    
+
     .meted__share-code {
       border-radius: 4px;
       background: white;
-      height: 75px; 
+      height: 75px;
       width: 352px;
-     
+
       font-size: 12px;
       color: #666666;
       line-height: 15px;
       padding: 9px 14px;
-      
+
       border: none;
       outline: none;
     }
-    
+
     .meted__close {
       position: absolute;
       right: 20px;
       top: 20px;
       cursor: pointer;
     }
-    
+
     .meted__copy-button {
       line-height: 48px;
       background: #00FF9B;
@@ -168,7 +168,7 @@ if (typeof init === "undefined") {
       font-size: 15px;
       width: 380px;
     }
-    
+
     .meted__advantages {
       width: 260px;
       margin: auto;
@@ -178,14 +178,14 @@ if (typeof init === "undefined") {
       font-weight: bold;
       font-size: 18px;
     }
-    
+
     .meted__advantage  {margin: 13px 0;}
-    
+
     .meted__advantage a {
       color: #00FF9B;
       text-decoration: none;
     }
-    
+
     .meted__share-dialog-content {
       position: absolute;
       right: 0;
@@ -193,7 +193,7 @@ if (typeof init === "undefined") {
       top: 50%;
       margin-top: -184px;
     }
-    
+
   `;
   style.type = 'text/css';
   // style.styleSheet.cssText = css;
@@ -205,10 +205,10 @@ if (typeof init === "undefined") {
 {
   let meted = document.querySelectorAll("*[data-meted]");
   let i = meted.length ;
-  
+
   while (i > 0) {
     i -=1;
-    let host = meted[i].dataset.metedDevEnv ? "http://localhost:5000" : "http://app.meted.co"; // TODO: production!
+    let host = meted[i].dataset.metedDevEnv ? "http://localhost:5000" : "https://app.meted.co";
 
     let imageId = meted[i].dataset.metedImageId;
 
