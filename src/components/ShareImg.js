@@ -13,7 +13,7 @@ class ShareImg extends React.Component {
   
   render () {
     let {img} = this.props;
-    
+
     let shareCod = `<figure data-meted="true" data-meted-image-id="${img.id}"><script src="https://app.meted.co/w.js"></script></figure>`;
 
     return (
@@ -24,7 +24,7 @@ class ShareImg extends React.Component {
             left: this.props.deltaLeft
           }}
         >
-          <img className="share-img__img" src={img.image.url} alt=""/>
+          <img className="share-img__img" src={img.largeThumbnail.url} alt=""/>
           <div className="share-img__wrapper">
             <div className="share-img__label">Author</div>
             <div className="share-img__value">
