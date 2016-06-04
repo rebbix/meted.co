@@ -1,6 +1,32 @@
 if (typeof init === "undefined") {
   function openDialog(el) {
-    console.log(el);
+    let shareDialog =  document.createElement("div");
+    shareDialog.className = "meted__share-dialog";
+    shareDialog.innerHTML = `
+      <div class="meted__share-dialog-content">
+        <h4 class="meted__share-title">Use this photo on your site with meted.co</h4>
+        <p class="meted__share-description">Reduce any possible legal issues by using this code</p>
+        
+        <textarea class="meted__share-code"><figure data-meted-image-id="2"><script src="index.js"></script></figure></textarea>
+        <br/>
+        <button class="meted__copy-button">COPY CODE</button>
+        
+        <ul class="meted__advantages">
+          <li class="meted__advantage">Network takedown tracking</li>      
+          <li class="meted__advantage">Licence snaphot: <a href="#">CC 2.0</a></li>
+          <li class="meted__advantage">Usage risk tracking: <a href="#">Low</a></li>
+        </ul>
+      </div>
+    `;
+    var closeButton = document.createElement("div");
+    closeButton.className = "meted__close";
+    closeButton.innerHTML = `<svg width="22" height="22" viewBox="2508 95 22 22" xmlns="http://www.w3.org/2000/svg">        
+          <path fill="none" fill-rule="evenodd" stroke-linecap="square" stroke="#FFF" stroke-width="3" 
+            d="M2527.526 97.474l-16.747 16.747M2527.526 114.22l-16.747-16.746"/>
+        </svg>`;
+    closeButton.onclick = function () {this.parentNode.parentNode.removeChild(this.parentNode);};
+    shareDialog.appendChild(closeButton);
+    el.appendChild(shareDialog);
   };
 
   var init = true;
@@ -15,7 +41,11 @@ if (typeof init === "undefined") {
       letter-spacing: -0.07px;
       font-style: italic;
     }
+    .meted__copyright a:hover {
+      text-decoration: underline;
+    }
     .meted__copyright a {
+      text-decoration: none;
       color: inherit;
     }
     .meted__share-buttons-block {
@@ -32,18 +62,19 @@ if (typeof init === "undefined") {
         
     .meted__share {
       cursor: pointer;
-      line-height: 36px;
       background: rgba(0,0,0, .70);
       color: white;
       font-weight: bold;
-      padding: 4px 15px;
+      padding: 9px 15px 27px;
       border: none;
       border-radius: 4px;
-      height: 36px;
       position: relative;
-      bottom: -4px;
+      bottom: -1px;
       margin-right: 6px;
       outline: none;
+      display: inline-block;
+      vertical-align: middle;
+      height: 0px;
     }
     
     .meted__contact {
@@ -59,9 +90,7 @@ if (typeof init === "undefined") {
       outline: none;
     }
 
-    
     .meted__share-dialog {
-      display: none;
       position: absolute;
       top: 0;
       bottom: 18px;
@@ -191,60 +220,25 @@ if (typeof init === "undefined") {
     meted[i].removeAttribute("data-meted-image-id");
 
 
-    let copyright = document.createElement("figcaption")
+    let copyright = document.createElement("figcaption");
     copyright.className = "meted__copyright";
-    copyright.innerHTML = `
-      <a href="#">Photo</a> by James Blacke / <a href="#">CC BY</a>
-    `;
+    copyright.innerHTML = `<a href="#">Photo</a> by James Blacke / <a href="#">CC BY</a>`;
 
     meted[i].appendChild(copyright);
 
     let hover = document.createElement("div");
     hover.className = "meted__share-buttons-block";
-    hover.innerHTML = `
-      <button class="meted__share"><svg width="14" height="17" viewBox="11 10 14 17" xmlns="http://www.w3.org/2000/svg">
+    hover.innerHTML = `<a href="mailto:metedapp@gmail.com?subject=Takedown%20photo%20request%20ID3452453" class="meted__share"><svg width="14" height="17" viewBox="11 10 14 17" xmlns="http://www.w3.org/2000/svg">
   <path d="M24.383 11.318c-.374-.155-.804-.07-1.09.217-1.264 1.263-3.32 1.264-4.586 0-2.045-2.043-5.37-2.043-7.414 0-.188.187-.293.442-.293.707v13c0 .552.447 1 1 1 .553 0 1-.448 1-1V20.69c1.27-.998 3.12-.912 4.293.26 2.045 2.042 5.37 2.042 7.414 0 .188-.19.293-.443.293-.708v-8c0-.405-.244-.77-.617-.924z" fill="#FFF" fill-rule="evenodd" fill-opacity=".75"/>
-</svg></button>      
-    `;
+</svg></a>`;
 
     let usebutton = document.createElement("button");
     usebutton.className = "meted__contact";
     usebutton.innerText = "USE PHOTO";
-    usebutton.addEventListener("click", (ev) => {
-      openDialog(meted[i]);
-    });
+    usebutton.addEventListener("click", (ev) => {openDialog(meted[i]);});
     hover.appendChild(usebutton);
 
     meted[i].appendChild(hover);
-
-    let shareDialog =  document.createElement("div");
-    shareDialog.className = "meted__share-dialog";
-    shareDialog.innerHTML = `
-      <div class="meted__close">
-        <svg width="22" height="22" viewBox="2508 95 22 22" xmlns="http://www.w3.org/2000/svg">        
-          <path fill="none" fill-rule="evenodd" stroke-linecap="square" stroke="#FFF" stroke-width="3" 
-            d="M2527.526 97.474l-16.747 16.747M2527.526 114.22l-16.747-16.746"/>
-        </svg>
-      </div>
-      
-      <div class="meted__share-dialog-content">
-        <h4 class="meted__share-title">Use this photo on your site with meted.co</h4>
-        <p class="meted__share-description">Reduce any possible legal issues by using this code</p>
-        
-        <textarea class="meted__share-code"><figure data-meted-image-id="2"><script src="index.js"></script></figure></textarea>
-        <br/>
-        <button class="meted__copy-button">COPY CODE</button>
-        
-        <ul class="meted__advantages">
-          <li class="meted__advantage">Network takedown tracking</li>      
-          <li class="meted__advantage">Licence snaphot: <a href="#">CC 2.0</a></li>
-          <li class="meted__advantage">Usage risk tracking: <a href="#">Low</a></li>
-        </ul>
-      </div>
-      
-    `
-
-    meted[i].appendChild(shareDialog);
   }
 
 }
