@@ -16,6 +16,8 @@ class ShareImg extends React.Component {
 
     let shareCod = `<figure data-meted="true" data-meted-image-id="${img.id}"><script src="https://app.meted.co/w.js"></script></figure>`;
 
+    let icon = <svg style={{marginRight: 10}} width="15" height="12" viewBox="0 3 15 12" xmlns="http://www.w3.org/2000/svg"><path d="M12.925 3.242l-6.82 7.88L1.91 6.27.337 8.093l5.77 6.666 8.39-9.697" fill="#00FF9B" fillRule="evenodd"/></svg>;
+
     return (
         <div
           className="share-img"
@@ -59,8 +61,11 @@ class ShareImg extends React.Component {
             <button className="share-img__share-btn">COPY CODE</button>
 
             <div className="share-img__advantages">
-              <div className="share-img__advantage">Network takedown tracking</div>
               <div className="share-img__advantage">
+                {icon}
+                Network takedown tracking</div>
+              <div className="share-img__advantage">
+                {icon}
                 Licence snaphot
                 {img.screenshot &&
                     <span>
@@ -70,6 +75,7 @@ class ShareImg extends React.Component {
                 }
               </div>
               <div className="share-img__advantage">
+                {icon}
                 Usage risk tracking
                 {img.riskLevel &&
                   <span>
