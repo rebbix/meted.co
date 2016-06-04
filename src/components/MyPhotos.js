@@ -28,8 +28,6 @@ class MyPhotos extends React.Component {
   render () {
     let {images, activeImg, activePosition} = this.state;
 
-    console.log(images);
-
     return <div className="payload">
       <h3 className="payload__title">Photos that you use</h3>
 

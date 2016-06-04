@@ -13,7 +13,7 @@ var Store = Reflux.createStore({
 
   searchImages (query) {
 
-    return fetch(`http://localhost:5000/api/search?q=${query}`, {
+    return fetch(`https://app.meted.co/api/search?q=${query}`, {
             mode: 'cors', headers: new Headers({'Content-Type': 'application/json'})
     })
         .then(response => response.json())
