@@ -31,7 +31,8 @@
     "request-promise": "^3.0.0",
     "rethinkdbdash": "^2.3.6",
     "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.11.0"
+    "webpack-dev-server": "^1.11.0",
+    "screenshot-capture": "^0.2.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
