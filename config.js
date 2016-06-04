@@ -13,4 +13,9 @@ config.cloudinary = {
   cloudName: 'meted-co',
   apiKey: '795426656763274',
   apiSecret: 'UTuY7VpX2feRBzUzgFcVoaHU6Oc'
+};
+config.screenshotLayer = {
+  accessKey: "83d75104a9fd8a63059953b45a5c8916",
+  // secretKey: "",
+  // secure: true
 }

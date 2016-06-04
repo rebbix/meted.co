@@ -22,7 +22,8 @@
     "express": "^4.13.4",
     "lodash": "^4.13.1",
     "request-promise": "^3.0.0",
-    "rethinkdbdash": "^2.3.6"
+    "rethinkdbdash": "^2.3.6",
+    "screenshot-capture": "^0.2.1"
   },
   "devDependencies": {
     "errorhandler": "^1.4.3"
