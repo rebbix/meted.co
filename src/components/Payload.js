@@ -1,9 +1,6 @@
 import React from "react";
 import ShareImg from "./ShareImg";
-
-import Actions from "../actions/Photos";
 import Store from "../storage/Photos";
-
 
 class Payload extends React.Component {
   constructor (props) {
@@ -33,8 +30,6 @@ class Payload extends React.Component {
   render () {
     let {activeImg, activePosition, images} = this.state;
 
-    console.log(images);
-
     return (
       <div className="payload ">{/*payload_empty*/}
         {images.map (img => (
@@ -43,8 +38,9 @@ class Payload extends React.Component {
               key={img.id}
               onClick={this.showImage.bind(this, img)}>
                 <img src={img.thumbnail.url} alt=""/>
+              
                 {activeImg === img &&
-                  <ShareImg deltaLeft={-activePosition.left} img={img.image.url}/>
+                  <ShareImg deltaLeft={-activePosition.left} img={img}/>
                 }
             </div>
         ))}

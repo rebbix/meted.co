@@ -5,8 +5,19 @@ class ShareImg extends React.Component {
     super(props)
     this.state = {}
   }
-
+  
+  componentDidMount () {
+    this.refs.shareCode.select();
+    this.refs.shareCode.focus();
+  }
+  
   render () {
+    let {img} = this.props;
+
+
+
+    let shareCod = `<figure data-meted="true" data-meted-image-id="${img.id}"><script src="https://app.meted.co/w.js"></script></figure>`;
+
     return (
         <div
           className="share-img"
@@ -15,13 +26,15 @@ class ShareImg extends React.Component {
             left: this.props.deltaLeft
           }}
         >
-          <img className="share-img__img" src={this.props.img} alt=""/>
+          <img className="share-img__img" src={img.image.url} alt=""/>
           <div className="share-img__wrapper">
             <div className="share-img__label">Author</div>
-            <div className="share-img__value">James Blake</div>
+            <div className="share-img__value">
+              <a target="__blank" href={img.url}>{img.owner.realName}</a>
+            </div>
 
             <div className="share-img__label">Licence</div>
-            <div className="share-img__value">CC0</div>
+            <div className="share-img__value">{img.license.shortName}</div>
 
             <div className="share-img__label">Tags</div>
             <div className="share-img__tags">
@@ -36,14 +49,14 @@ class ShareImg extends React.Component {
               Reduce any possible legal issues by using this code
             </span>
 
-            <textarea className="share-img__code" defaultValue={`<figure class="meted.co" data-meted-image-id="1"><script src="index.js" data-user-id="1"></script></figure>`}/>
+            <textarea ref="shareCode" className="share-img__code" defaultValue={shareCod}/>
 
             <button className="share-img__share-btn">COPY CODE</button>
 
             <div className="share-img__advantages">
               <div className="share-img__advantage">Network takedown tracking</div>
-              <div className="share-img__advantage">Licence snaphot: <a href="#">CC 2.0</a></div>
-              <div className="share-img__advantage">Usage risk tracking: <a href="#">Low</a></div>
+              <div className="share-img__advantage">Licence snaphot</div>
+              <div className="share-img__advantage">Usage risk tracking</div>
             </div>
 
             <p className="share-img__notice">
