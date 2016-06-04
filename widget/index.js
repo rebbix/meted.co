@@ -1,5 +1,5 @@
 if (typeof init === "undefined") {
-  const widgetURL = "index.js";
+  const widgetURL = "https://app.meted.co/w.js";
 
   function openDialog(el, data) {
     let imageId = el.dataset.metedImageId; //TODO: fix it;
