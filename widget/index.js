@@ -11,7 +11,7 @@ if (typeof init === "undefined") {
         <h4 class="meted__share-title">Use this photo on your site with meted.co</h4>
         <p class="meted__share-description">Reduce any possible legal issues by using this code</p>
         
-        <textarea class="meted__share-code"><figure data-meted-image-id="${imageId}"><script src="${widgetURL}"></script></figure></textarea>
+        <textarea class="meted__share-code"><figure data-meted="true" data-meted-image-id="${imageId}"><script src="${widgetURL}"></script></figure></textarea>
         <br/>
         <button class="meted__copy-button">COPY CODE</button>
         
