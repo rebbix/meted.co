@@ -10,7 +10,7 @@ if (typeof init === "undefined") {
       <div class="meted__share-dialog-content">
         <h4 class="meted__share-title">Use this photo on your site with meted.co</h4>
         <p class="meted__share-description">Reduce any possible legal issues by using this code</p>
-        
+
         <textarea class="meted__share-code"><figure data-meted="true" data-meted-image-id="${imageId}"><script src="${widgetURL}"></script></figure></textarea>
         <br/>
         <button class="meted__copy-button">COPY CODE</button>
@@ -237,7 +237,7 @@ if (typeof init === "undefined") {
       let copyright = document.createElement("figcaption");
       copyright.className = "meted__copyright";
       copyright.innerHTML = `
-        <a target="_blank" href="${data.author.url}">Photo</a>
+        <a target="_blank" href="${data.url}">Photo</a>
         by ${data.author.name} /&nbsp;
         <a target="_blank" href="${data.license.url}">${data.license.shortName}</a>`;
 
