@@ -240,5 +240,4 @@ if (typeof init === "undefined") {
 
     meted[i].appendChild(hover);
   }
-
 }
