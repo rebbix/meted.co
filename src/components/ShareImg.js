@@ -2,7 +2,7 @@ import React from "react";
 
 class ShareImg extends React.Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {}
   }
   
@@ -78,9 +78,20 @@ class ShareImg extends React.Component {
                 {icon}
                 Usage risk tracking
                 {img.riskLevel &&
-                  <span>
+                  <span>{console.log(img.riskLevel )}
                     :&nbsp;
-                    <a href="#" title={img.riskLevel.explanation}>{img.riskLevel.text}</a>
+                    <a href="#"
+                       title={img.riskLevel.explanation}
+                       style={{
+                          color:   img.riskLevel.score === 0 ? "transparent"
+                                 : img.riskLevel.score === 1 ? "#00FF9B"
+                                 : img.riskLevel.score === 2 ? "#FFDA18"
+                                 : img.riskLevel.score === 3 ? "#FF5359"
+                                 : "transparent"
+                       }}
+                    >
+                      {img.riskLevel.text}
+                      </a> 
                   </span>
                 }
               </div>

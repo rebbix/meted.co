@@ -11,9 +11,11 @@ class Layout extends React.Component {
     }
   }
 
-  toggleMyPhotos () {
-    this.setState({myPhotos: !this.state.myPhotos})
+  turnOffMyPhotos () {
+    this.setState({myPhotos: false})
   }
+
+  toggleMyPhotos () { this.setState({myPhotos: !this.state.myPhotos}) }
 
   render () {
     let {myPhotos} = this.state;
@@ -26,7 +28,7 @@ class Layout extends React.Component {
           <div style={{
             display: "inline",
             opacity: myPhotos ? 0.3 : 1
-          }}><Search/></div>
+          }}><Search onFocus={this.turnOffMyPhotos.bind(this)}/></div>
           <span
               className={`layout__my-photo-link ${myPhotos && "layout__my-photo-link_active"}`}
               onClick = {this.toggleMyPhotos.bind(this)}>My photos</span>

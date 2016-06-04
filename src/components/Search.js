@@ -38,6 +38,7 @@ class Search extends React.Component {
             ref="searchField"
             value={this.state.searchString}
             onChange = {this.search.bind(this)}
+            onFocus={this.props.onFocus}
             placeholder="Search images" type="text" className="search__input"
         />
         <button className="search__button">
