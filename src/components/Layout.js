@@ -1,4 +1,6 @@
 import React from "react";
+import Search from "./Search"
+import Payload from "./Payload"
 
 class Layout extends React.Component {
   constructor (props) {
@@ -7,7 +9,12 @@ class Layout extends React.Component {
   }
   render () {
     return (
-        <h1>Tadadam!</h1>
+      <div className="layout">
+        <div className="layout__search">
+          <Search/>
+        </div>
+        <div className="layout__payload"><Payload/></div>
+      </div>
     )
   }
 }
