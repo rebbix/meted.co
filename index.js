@@ -8,7 +8,15 @@ var Screenshot = require('./lib/Screenshot');
 var TinyEye = require('./lib/TinyEye');
 var createApp = require('./lib/app');
 
-var logger = bunyan.createLogger({name: 'meted', level: config.logLevel})
+var logger = bunyan.createLogger({
+  name: 'meted',
+  level: config.logLevel,
+  stream: process.stdout,
+  serializers: {
+    req: bunyan.stdSerializers.req,
+    err: bunyan.stdSerializers.err
+  }
+});
 let cloudinary = new Cloudinary(config.cloudinary, logger);
 var dependencies = {
   db: r,
