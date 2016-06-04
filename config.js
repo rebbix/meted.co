@@ -25,3 +25,6 @@ config.tinyEye = {
   privateKey: process.env.TINYEYE_PRIVATE_KEY || "6mm60lsCNIB,FwOWjJqA80QZHh9BMwc-ber4u=t^",
   baseUrl: "https://api.tineye.com/rest/"
 };
+config.projectOxford = {
+  apiKey: "3ada40786fda457d80787b2c20f0c1c8"
+};

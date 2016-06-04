@@ -6,6 +6,7 @@ var Flickr = require('./lib/Flickr');
 var Cloudinary = require('./lib/Cloudinary');
 var Screenshot = require('./lib/Screenshot');
 var TinyEye = require('./lib/TinyEye');
+var ProjectOxford = require('./lib/ProjectOxford');
 var createApp = require('./lib/app');
 
 var logger = bunyan.createLogger({
@@ -23,7 +24,8 @@ var dependencies = {
   flickrClient: new Flickr(config.flickr.apiKey, logger),
   cloudinary: cloudinary,
   screenshot: new Screenshot(config.screenshotLayer, logger, cloudinary),
-  tinyEye: new TinyEye(config.tinyEye, logger)
+  tinyEye: new TinyEye(config.tinyEye, logger),
+  projectOxford: new ProjectOxford(config.projectOxford, logger)
 };
 var app = createApp(config, logger, dependencies);
 
