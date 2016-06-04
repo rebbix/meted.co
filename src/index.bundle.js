@@ -20372,9 +20372,13 @@
 
 	var _Search2 = _interopRequireDefault(_Search);
 
-	var _Payload = __webpack_require__(170);
+	var _Payload = __webpack_require__(191);
 
 	var _Payload2 = _interopRequireDefault(_Payload);
+
+	var _MyPhotos = __webpack_require__(193);
+
+	var _MyPhotos2 = _interopRequireDefault(_MyPhotos);
 
 	var Layout = (function (_React$Component) {
 	  _inherits(Layout, _React$Component);
@@ -20383,12 +20387,21 @@
 	    _classCallCheck(this, Layout);
 
 	    _get(Object.getPrototypeOf(Layout.prototype), "constructor", this).call(this, props);
-	    this.state = {};
+	    this.state = {
+	      myPhotos: false
+	    };
 	  }
 
 	  _createClass(Layout, [{
+	    key: "toggleMyPhotos",
+	    value: function toggleMyPhotos() {
+	      this.setState({ myPhotos: !this.state.myPhotos });
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
+	      var myPhotos = this.state.myPhotos;
+
 	      return _react2["default"].createElement(
 	        "div",
 	        { className: "layout" },
@@ -20404,12 +20417,26 @@
 	              _react2["default"].createElement("path", { d: "M83.97 32.12c0-4.08 1.35-6.3 3.27-6.3 1.23 0 1.86.69 1.86 2.1V38h3.72V27.29c0-2.91-1.71-4.65-4.5-4.65-1.92 0-3.45 1.05-4.62 3.12-.63-2.07-2.28-3.12-4.23-3.12-1.71 0-3.18.9-4.35 2.67v-2.43H71.4V38h3.72v-5.55c0-4.32 1.35-6.63 3.27-6.63 1.23 0 1.86.69 1.86 2.1V38h3.72v-5.88zm26.37-2.01c0-1.71-.54-3.48-1.62-4.95-1.08-1.53-3.03-2.52-5.43-2.52-5.19 0-7.26 4.2-7.26 7.8 0 3.6 2.07 7.8 7.26 7.8 3.3 0 5.58-1.47 6.87-4.41l-3-1.11c-.9 1.56-2.13 2.34-3.66 2.34-2.16 0-3.48-1.59-3.57-3.42h10.41v-1.53zm-7.05-4.29c1.74 0 2.82.96 3.24 2.88h-6.51c.27-1.59 1.5-2.88 3.27-2.88zm18.42 8.88c-.45.24-.93.36-1.44.36-1.32 0-1.98-.66-1.98-2.46v-6.54h3.99v-3.18h-3.99v-6.12l-3.72 2.34v3.78h-2.34v3.18h2.34v6.6c0 3.69 2.07 5.58 5.55 5.58.87 0 1.68-.18 2.46-.54l-.87-3zm17.04-4.59c0-1.71-.54-3.48-1.62-4.95-1.08-1.53-3.03-2.52-5.43-2.52-5.19 0-7.26 4.2-7.26 7.8 0 3.6 2.07 7.8 7.26 7.8 3.3 0 5.58-1.47 6.87-4.41l-3-1.11c-.9 1.56-2.13 2.34-3.66 2.34-2.16 0-3.48-1.59-3.57-3.42h10.41v-1.53zm-7.05-4.29c1.74 0 2.82.96 3.24 2.88h-6.51c.27-1.59 1.5-2.88 3.27-2.88zm16.8-3.18c-4.44 0-6.9 3.03-6.9 7.8s2.46 7.8 6.9 7.8c1.71 0 3.18-.93 3.66-1.8V38h3.72V16.76h-3.72v7.5c-.69-.87-2.19-1.62-3.66-1.62zm-2.01 4.41c.66-.81 1.5-1.23 2.52-1.23s1.86.42 2.49 1.23c.66.81.99 1.92.99 3.39 0 1.47-.33 2.61-.99 3.42-.63.81-1.47 1.2-2.49 1.2-1.02 0-1.86-.42-2.52-1.23-.66-.81-.99-1.95-.99-3.39 0-1.44.33-2.58.99-3.39zm14.58 10.41c.96.96 2.64.96 3.6 0s.96-2.64 0-3.6-2.64-.96-3.6 0-.96 2.64 0 3.6zm18.78-4.89c-.81 1.65-2.01 2.49-3.54 2.49-2.28 0-3.48-1.86-3.48-4.62s1.2-4.62 3.48-4.62c1.53 0 2.73.84 3.54 2.49l3.33-1.35c-1.17-2.88-3.45-4.32-6.87-4.32-2.37 0-4.17.75-5.46 2.22-1.29 1.47-1.92 3.33-1.92 5.58s.63 4.11 1.92 5.58c1.29 1.47 3.09 2.22 5.46 2.22 3.42 0 5.7-1.44 6.87-4.32l-3.33-1.35zm7.77 3.48c1.38 1.47 3.24 2.19 5.61 2.19s4.23-.72 5.61-2.19 2.07-3.36 2.07-5.61c0-2.25-.69-4.11-2.07-5.58-1.38-1.47-3.24-2.22-5.61-2.22s-4.23.75-5.61 2.22c-1.38 1.47-2.07 3.33-2.07 5.58s.69 4.14 2.07 5.61zm2.85-8.88c.69-.9 1.59-1.35 2.76-1.35 1.17 0 2.07.45 2.76 1.35.69.87 1.02 1.98 1.02 3.27s-.33 2.4-1.02 3.3c-.69.87-1.59 1.32-2.76 1.32-1.17 0-2.07-.45-2.76-1.32-.69-.9-1.02-2.01-1.02-3.3s.33-2.4 1.02-3.27z", fillOpacity: ".5", fill: "#343434", fillRule: "evenodd" })
 	            )
 	          ),
-	          _react2["default"].createElement(_Search2["default"], null)
+	          _react2["default"].createElement(
+	            "div",
+	            { style: {
+	                display: "inline",
+	                opacity: myPhotos ? 0.3 : 1
+	              } },
+	            _react2["default"].createElement(_Search2["default"], null)
+	          ),
+	          _react2["default"].createElement(
+	            "span",
+	            {
+	              className: "layout__my-photo-link " + (myPhotos && "layout__my-photo-link_active"),
+	              onClick: this.toggleMyPhotos.bind(this) },
+	            "My photos"
+	          )
 	        ),
 	        _react2["default"].createElement(
 	          "div",
 	          { className: "layout__payload" },
-	          _react2["default"].createElement(_Payload2["default"], null)
+	          myPhotos ? _react2["default"].createElement(_MyPhotos2["default"], null) : _react2["default"].createElement(_Payload2["default"], null)
 	        )
 	      );
 	    }
@@ -20445,6 +20472,14 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _actionsPhotos = __webpack_require__(170);
+
+	var _actionsPhotos2 = _interopRequireDefault(_actionsPhotos);
+
+	var _storagePhotos = __webpack_require__(190);
+
+	var _storagePhotos2 = _interopRequireDefault(_storagePhotos);
+
 	var Search = (function (_React$Component) {
 	  _inherits(Search, _React$Component);
 
@@ -20452,16 +20487,52 @@
 	    _classCallCheck(this, Search);
 
 	    _get(Object.getPrototypeOf(Search.prototype), "constructor", this).call(this, props);
-	    this.state = {};
+	    this.state = {
+	      searchString: ""
+	    };
 	  }
 
 	  _createClass(Search, [{
+	    key: "search",
+	    value: function search(ev) {
+	      this.setState({ searchString: this.refs.searchField.value });
+	    }
+	  }, {
+	    key: "submitSearch",
+	    value: function submitSearch(ev) {
+	      ev.preventDefault();
+	      ev.stopPropagation();
+
+	      _actionsPhotos2["default"].searchUpdate(this.state.searchString);
+	      this.setState({ searching: true });
+	    }
+	  }, {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.unsubscribe = _storagePhotos2["default"].listen(this.onStatusChange.bind(this));
+	    }
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {
+	      this.unsubscribe();
+	    }
+	  }, {
+	    key: "onStatusChange",
+	    value: function onStatusChange(images) {
+	      this.setState({ searching: false });
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      return _react2["default"].createElement(
 	        "form",
-	        { action: "", className: "search" },
-	        _react2["default"].createElement("input", { placeholder: "Search images", type: "text", className: "search__input" }),
+	        { action: "", className: "search", onSubmit: this.submitSearch.bind(this) },
+	        _react2["default"].createElement("input", {
+	          ref: "searchField",
+	          value: this.state.searchString,
+	          onChange: this.search.bind(this),
+	          placeholder: "Search images", type: "text", className: "search__input"
+	        }),
 	        _react2["default"].createElement(
 	          "button",
 	          { className: "search__button" },
@@ -20470,7 +20541,8 @@
 	            { width: "22", height: "22", viewBox: "39 13 22 22", xmlns: "http://www.w3.org/2000/svg" },
 	            _react2["default"].createElement("path", { d: "M60.37 31.823L55.36 26.73c.85-1.376 1.345-3.004 1.345-4.75 0-4.943-3.94-8.95-8.8-8.95-4.86 0-8.8 4.007-8.8 8.95 0 4.942 3.94 8.948 8.8 8.948 1.87 0 3.6-.595 5.026-1.605l4.947 5.032c.344.35.794.523 1.244.523.45 0 .9-.174 1.246-.523.686-.7.686-1.833 0-2.532zm-12.463-3.795c-3.285 0-5.948-2.708-5.948-6.048s2.662-6.05 5.947-6.05 5.948 2.71 5.948 6.05-2.663 6.048-5.948 6.048z", fill: "#FFF", "fill-rule": "evenodd" })
 	          )
-	        )
+	        ),
+	        this.state.searching && "searching"
 	      );
 	    }
 	  }]);
@@ -20483,6 +20555,1495 @@
 
 /***/ },
 /* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	var _reflux = __webpack_require__(171);
+
+	var _reflux2 = _interopRequireDefault(_reflux);
+
+	var Actions = _reflux2["default"].createActions(["searchUpdate"]);
+
+	exports["default"] = Actions;
+	module.exports = exports["default"];
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var Reflux = __webpack_require__(172);
+
+	Reflux.connect = __webpack_require__(185);
+
+	Reflux.connectFilter = __webpack_require__(187);
+
+	Reflux.ListenerMixin = __webpack_require__(186);
+
+	Reflux.listenTo = __webpack_require__(188);
+
+	Reflux.listenToMany = __webpack_require__(189);
+
+	module.exports = Reflux;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	var Reflux = {
+	    version: {
+	        "reflux-core": "0.3.0"
+	    }
+	};
+
+	Reflux.ActionMethods = __webpack_require__(173);
+
+	Reflux.ListenerMethods = __webpack_require__(174);
+
+	Reflux.PublisherMethods = __webpack_require__(183);
+
+	Reflux.StoreMethods = __webpack_require__(182);
+
+	Reflux.createAction = __webpack_require__(184);
+
+	Reflux.createStore = __webpack_require__(178);
+
+	var maker = __webpack_require__(177).staticJoinCreator;
+
+	Reflux.joinTrailing = Reflux.all = maker("last"); // Reflux.all alias for backward compatibility
+
+	Reflux.joinLeading = maker("first");
+
+	Reflux.joinStrict = maker("strict");
+
+	Reflux.joinConcat = maker("all");
+
+	var _ = Reflux.utils = __webpack_require__(175);
+
+	Reflux.EventEmitter = _.EventEmitter;
+
+	Reflux.Promise = _.Promise;
+
+	/**
+	 * Convenience function for creating a set of actions
+	 *
+	 * @param definitions the definitions for the actions to be created
+	 * @returns an object with actions of corresponding action names
+	 */
+	Reflux.createActions = (function () {
+	    var reducer = function reducer(definitions, actions) {
+	        Object.keys(definitions).forEach(function (actionName) {
+	            var val = definitions[actionName];
+	            actions[actionName] = Reflux.createAction(val);
+	        });
+	    };
+
+	    return function (definitions) {
+	        var actions = {};
+	        if (definitions instanceof Array) {
+	            definitions.forEach(function (val) {
+	                if (_.isObject(val)) {
+	                    reducer(val, actions);
+	                } else {
+	                    actions[val] = Reflux.createAction(val);
+	                }
+	            });
+	        } else {
+	            reducer(definitions, actions);
+	        }
+	        return actions;
+	    };
+	})();
+
+	/**
+	 * Sets the eventmitter that Reflux uses
+	 */
+	Reflux.setEventEmitter = function (ctx) {
+	    Reflux.EventEmitter = _.EventEmitter = ctx;
+	};
+
+	/**
+	 * Sets the method used for deferring actions and stores
+	 */
+	Reflux.nextTick = function (nextTick) {
+	    _.nextTick = nextTick;
+	};
+
+	Reflux.use = function (pluginCb) {
+	    pluginCb(Reflux);
+	};
+
+	/**
+	 * Provides the set of created actions and stores for introspection
+	 */
+	/*eslint-disable no-underscore-dangle*/
+	Reflux.__keep = __webpack_require__(179);
+	/*eslint-enable no-underscore-dangle*/
+
+	/**
+	 * Warn if Function.prototype.bind not available
+	 */
+	if (!Function.prototype.bind) {
+	    console.error("Function.prototype.bind not available. " + "ES5 shim required. " + "https://github.com/spoike/refluxjs#es5");
+	}
+
+	exports["default"] = Reflux;
+	module.exports = exports["default"];
+
+/***/ },
+/* 173 */
+/***/ function(module, exports) {
+
+	/**
+	 * A module of methods that you want to include in all actions.
+	 * This module is consumed by `createAction`.
+	 */
+	"use strict";
+
+	module.exports = {};
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _ = __webpack_require__(175),
+	    maker = __webpack_require__(177).instanceJoinCreator;
+
+	/**
+	 * Extract child listenables from a parent from their
+	 * children property and return them in a keyed Object
+	 *
+	 * @param {Object} listenable The parent listenable
+	 */
+	var mapChildListenables = function mapChildListenables(listenable) {
+	    var i = 0,
+	        children = {},
+	        childName;
+	    for (; i < (listenable.children || []).length; ++i) {
+	        childName = listenable.children[i];
+	        if (listenable[childName]) {
+	            children[childName] = listenable[childName];
+	        }
+	    }
+	    return children;
+	};
+
+	/**
+	 * Make a flat dictionary of all listenables including their
+	 * possible children (recursively), concatenating names in camelCase.
+	 *
+	 * @param {Object} listenables The top-level listenables
+	 */
+	var flattenListenables = function flattenListenables(listenables) {
+	    var flattened = {};
+	    for (var key in listenables) {
+	        var listenable = listenables[key];
+	        var childMap = mapChildListenables(listenable);
+
+	        // recursively flatten children
+	        var children = flattenListenables(childMap);
+
+	        // add the primary listenable and chilren
+	        flattened[key] = listenable;
+	        for (var childKey in children) {
+	            var childListenable = children[childKey];
+	            flattened[key + _.capitalize(childKey)] = childListenable;
+	        }
+	    }
+
+	    return flattened;
+	};
+
+	/**
+	 * A module of methods related to listening.
+	 */
+	module.exports = {
+
+	    /**
+	     * An internal utility function used by `validateListening`
+	     *
+	     * @param {Action|Store} listenable The listenable we want to search for
+	     * @returns {Boolean} The result of a recursive search among `this.subscriptions`
+	     */
+	    hasListener: function hasListener(listenable) {
+	        var i = 0,
+	            j,
+	            listener,
+	            listenables;
+	        for (; i < (this.subscriptions || []).length; ++i) {
+	            listenables = [].concat(this.subscriptions[i].listenable);
+	            for (j = 0; j < listenables.length; j++) {
+	                listener = listenables[j];
+	                if (listener === listenable || listener.hasListener && listener.hasListener(listenable)) {
+	                    return true;
+	                }
+	            }
+	        }
+	        return false;
+	    },
+
+	    /**
+	     * A convenience method that listens to all listenables in the given object.
+	     *
+	     * @param {Object} listenables An object of listenables. Keys will be used as callback method names.
+	     */
+	    listenToMany: function listenToMany(listenables) {
+	        var allListenables = flattenListenables(listenables);
+	        for (var key in allListenables) {
+	            var cbname = _.callbackName(key),
+	                localname = this[cbname] ? cbname : this[key] ? key : undefined;
+	            if (localname) {
+	                this.listenTo(allListenables[key], localname, this[cbname + "Default"] || this[localname + "Default"] || localname);
+	            }
+	        }
+	    },
+
+	    /**
+	     * Checks if the current context can listen to the supplied listenable
+	     *
+	     * @param {Action|Store} listenable An Action or Store that should be
+	     *  listened to.
+	     * @returns {String|Undefined} An error message, or undefined if there was no problem.
+	     */
+	    validateListening: function validateListening(listenable) {
+	        if (listenable === this) {
+	            return "Listener is not able to listen to itself";
+	        }
+	        if (!_.isFunction(listenable.listen)) {
+	            return listenable + " is missing a listen method";
+	        }
+	        if (listenable.hasListener && listenable.hasListener(this)) {
+	            return "Listener cannot listen to this listenable because of circular loop";
+	        }
+	    },
+
+	    /**
+	     * Sets up a subscription to the given listenable for the context object
+	     *
+	     * @param {Action|Store} listenable An Action or Store that should be
+	     *  listened to.
+	     * @param {Function|String} callback The callback to register as event handler
+	     * @param {Function|String} defaultCallback The callback to register as default handler
+	     * @returns {Object} A subscription obj where `stop` is an unsub function and `listenable` is the object being listened to
+	     */
+	    listenTo: function listenTo(listenable, callback, defaultCallback) {
+	        var desub,
+	            unsubscriber,
+	            subscriptionobj,
+	            subs = this.subscriptions = this.subscriptions || [];
+	        _.throwIf(this.validateListening(listenable));
+	        this.fetchInitialState(listenable, defaultCallback);
+	        desub = listenable.listen(this[callback] || callback, this);
+	        unsubscriber = function () {
+	            var index = subs.indexOf(subscriptionobj);
+	            _.throwIf(index === -1, "Tried to remove listen already gone from subscriptions list!");
+	            subs.splice(index, 1);
+	            desub();
+	        };
+	        subscriptionobj = {
+	            stop: unsubscriber,
+	            listenable: listenable
+	        };
+	        subs.push(subscriptionobj);
+	        return subscriptionobj;
+	    },
+
+	    /**
+	     * Stops listening to a single listenable
+	     *
+	     * @param {Action|Store} listenable The action or store we no longer want to listen to
+	     * @returns {Boolean} True if a subscription was found and removed, otherwise false.
+	     */
+	    stopListeningTo: function stopListeningTo(listenable) {
+	        var sub,
+	            i = 0,
+	            subs = this.subscriptions || [];
+	        for (; i < subs.length; i++) {
+	            sub = subs[i];
+	            if (sub.listenable === listenable) {
+	                sub.stop();
+	                _.throwIf(subs.indexOf(sub) !== -1, "Failed to remove listen from subscriptions list!");
+	                return true;
+	            }
+	        }
+	        return false;
+	    },
+
+	    /**
+	     * Stops all subscriptions and empties subscriptions array
+	     */
+	    stopListeningToAll: function stopListeningToAll() {
+	        var remaining,
+	            subs = this.subscriptions || [];
+	        while (remaining = subs.length) {
+	            subs[0].stop();
+	            _.throwIf(subs.length !== remaining - 1, "Failed to remove listen from subscriptions list!");
+	        }
+	    },
+
+	    /**
+	     * Used in `listenTo`. Fetches initial data from a publisher if it has a `getInitialState` method.
+	     * @param {Action|Store} listenable The publisher we want to get initial state from
+	     * @param {Function|String} defaultCallback The method to receive the data
+	     */
+	    fetchInitialState: function fetchInitialState(listenable, defaultCallback) {
+	        defaultCallback = defaultCallback && this[defaultCallback] || defaultCallback;
+	        var me = this;
+	        if (_.isFunction(defaultCallback) && _.isFunction(listenable.getInitialState)) {
+	            var data = listenable.getInitialState();
+	            if (data && _.isFunction(data.then)) {
+	                data.then(function () {
+	                    defaultCallback.apply(me, arguments);
+	                });
+	            } else {
+	                defaultCallback.call(this, data);
+	            }
+	        }
+	    },
+
+	    /**
+	     * The callback will be called once all listenables have triggered at least once.
+	     * It will be invoked with the last emission from each listenable.
+	     * @param {...Publishers} publishers Publishers that should be tracked.
+	     * @param {Function|String} callback The method to call when all publishers have emitted
+	     * @returns {Object} A subscription obj where `stop` is an unsub function and `listenable` is an array of listenables
+	     */
+	    joinTrailing: maker("last"),
+
+	    /**
+	     * The callback will be called once all listenables have triggered at least once.
+	     * It will be invoked with the first emission from each listenable.
+	     * @param {...Publishers} publishers Publishers that should be tracked.
+	     * @param {Function|String} callback The method to call when all publishers have emitted
+	     * @returns {Object} A subscription obj where `stop` is an unsub function and `listenable` is an array of listenables
+	     */
+	    joinLeading: maker("first"),
+
+	    /**
+	     * The callback will be called once all listenables have triggered at least once.
+	     * It will be invoked with all emission from each listenable.
+	     * @param {...Publishers} publishers Publishers that should be tracked.
+	     * @param {Function|String} callback The method to call when all publishers have emitted
+	     * @returns {Object} A subscription obj where `stop` is an unsub function and `listenable` is an array of listenables
+	     */
+	    joinConcat: maker("all"),
+
+	    /**
+	     * The callback will be called once all listenables have triggered.
+	     * If a callback triggers twice before that happens, an error is thrown.
+	     * @param {...Publishers} publishers Publishers that should be tracked.
+	     * @param {Function|String} callback The method to call when all publishers have emitted
+	     * @returns {Object} A subscription obj where `stop` is an unsub function and `listenable` is an array of listenables
+	     */
+	    joinStrict: maker("strict")
+	};
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.capitalize = capitalize;
+	exports.callbackName = callbackName;
+	exports.isObject = isObject;
+	exports.extend = extend;
+	exports.isFunction = isFunction;
+	exports.object = object;
+	exports.isArguments = isArguments;
+	exports.throwIf = throwIf;
+
+	function capitalize(string) {
+	    return string.charAt(0).toUpperCase() + string.slice(1);
+	}
+
+	function callbackName(string, prefix) {
+	    prefix = prefix || "on";
+	    return prefix + exports.capitalize(string);
+	}
+
+	/*
+	 * isObject, extend, isFunction, isArguments are taken from undescore/lodash in
+	 * order to remove the dependency
+	 */
+
+	function isObject(obj) {
+	    var type = typeof obj;
+	    return type === "function" || type === "object" && !!obj;
+	}
+
+	function extend(obj) {
+	    if (!isObject(obj)) {
+	        return obj;
+	    }
+	    var source, prop;
+	    for (var i = 1, length = arguments.length; i < length; i++) {
+	        source = arguments[i];
+	        for (prop in source) {
+	            if (Object.getOwnPropertyDescriptor && Object.defineProperty) {
+	                var propertyDescriptor = Object.getOwnPropertyDescriptor(source, prop);
+	                Object.defineProperty(obj, prop, propertyDescriptor);
+	            } else {
+	                obj[prop] = source[prop];
+	            }
+	        }
+	    }
+	    return obj;
+	}
+
+	function isFunction(value) {
+	    return typeof value === "function";
+	}
+
+	exports.EventEmitter = __webpack_require__(176);
+
+	exports.nextTick = function (callback) {
+	    setTimeout(callback, 0);
+	};
+
+	function object(keys, vals) {
+	    var o = {},
+	        i = 0;
+	    for (; i < keys.length; i++) {
+	        o[keys[i]] = vals[i];
+	    }
+	    return o;
+	}
+
+	function isArguments(value) {
+	    return typeof value === "object" && "callee" in value && typeof value.length === "number";
+	}
+
+	function throwIf(val, msg) {
+	    if (val) {
+	        throw Error(msg || val);
+	    }
+	}
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var has = Object.prototype.hasOwnProperty;
+
+	//
+	// We store our EE objects in a plain object whose properties are event names.
+	// If `Object.create(null)` is not supported we prefix the event names with a
+	// `~` to make sure that the built-in object properties are not overridden or
+	// used as an attack vector.
+	// We also assume that `Object.create(null)` is available when the event name
+	// is an ES6 Symbol.
+	//
+	var prefix = typeof Object.create !== 'function' ? '~' : false;
+
+	/**
+	 * Representation of a single EventEmitter function.
+	 *
+	 * @param {Function} fn Event handler to be called.
+	 * @param {Mixed} context Context for function execution.
+	 * @param {Boolean} [once=false] Only emit once
+	 * @api private
+	 */
+	function EE(fn, context, once) {
+	  this.fn = fn;
+	  this.context = context;
+	  this.once = once || false;
+	}
+
+	/**
+	 * Minimal EventEmitter interface that is molded against the Node.js
+	 * EventEmitter interface.
+	 *
+	 * @constructor
+	 * @api public
+	 */
+	function EventEmitter() {} /* Nothing to set */
+
+	/**
+	 * Hold the assigned EventEmitters by name.
+	 *
+	 * @type {Object}
+	 * @private
+	 */
+	EventEmitter.prototype._events = undefined;
+
+	/**
+	 * Return an array listing the events for which the emitter has registered
+	 * listeners.
+	 *
+	 * @returns {Array}
+	 * @api public
+	 */
+	EventEmitter.prototype.eventNames = function eventNames() {
+	  var events = this._events,
+	      names = [],
+	      name;
+
+	  if (!events) return names;
+
+	  for (name in events) {
+	    if (has.call(events, name)) names.push(prefix ? name.slice(1) : name);
+	  }
+
+	  if (Object.getOwnPropertySymbols) {
+	    return names.concat(Object.getOwnPropertySymbols(events));
+	  }
+
+	  return names;
+	};
+
+	/**
+	 * Return a list of assigned event listeners.
+	 *
+	 * @param {String} event The events that should be listed.
+	 * @param {Boolean} exists We only need to know if there are listeners.
+	 * @returns {Array|Boolean}
+	 * @api public
+	 */
+	EventEmitter.prototype.listeners = function listeners(event, exists) {
+	  var evt = prefix ? prefix + event : event,
+	      available = this._events && this._events[evt];
+
+	  if (exists) return !!available;
+	  if (!available) return [];
+	  if (available.fn) return [available.fn];
+
+	  for (var i = 0, l = available.length, ee = new Array(l); i < l; i++) {
+	    ee[i] = available[i].fn;
+	  }
+
+	  return ee;
+	};
+
+	/**
+	 * Emit an event to all registered event listeners.
+	 *
+	 * @param {String} event The name of the event.
+	 * @returns {Boolean} Indication if we've emitted an event.
+	 * @api public
+	 */
+	EventEmitter.prototype.emit = function emit(event, a1, a2, a3, a4, a5) {
+	  var evt = prefix ? prefix + event : event;
+
+	  if (!this._events || !this._events[evt]) return false;
+
+	  var listeners = this._events[evt],
+	      len = arguments.length,
+	      args,
+	      i;
+
+	  if ('function' === typeof listeners.fn) {
+	    if (listeners.once) this.removeListener(event, listeners.fn, undefined, true);
+
+	    switch (len) {
+	      case 1:
+	        return listeners.fn.call(listeners.context), true;
+	      case 2:
+	        return listeners.fn.call(listeners.context, a1), true;
+	      case 3:
+	        return listeners.fn.call(listeners.context, a1, a2), true;
+	      case 4:
+	        return listeners.fn.call(listeners.context, a1, a2, a3), true;
+	      case 5:
+	        return listeners.fn.call(listeners.context, a1, a2, a3, a4), true;
+	      case 6:
+	        return listeners.fn.call(listeners.context, a1, a2, a3, a4, a5), true;
+	    }
+
+	    for (i = 1, args = new Array(len - 1); i < len; i++) {
+	      args[i - 1] = arguments[i];
+	    }
+
+	    listeners.fn.apply(listeners.context, args);
+	  } else {
+	    var length = listeners.length,
+	        j;
+
+	    for (i = 0; i < length; i++) {
+	      if (listeners[i].once) this.removeListener(event, listeners[i].fn, undefined, true);
+
+	      switch (len) {
+	        case 1:
+	          listeners[i].fn.call(listeners[i].context);break;
+	        case 2:
+	          listeners[i].fn.call(listeners[i].context, a1);break;
+	        case 3:
+	          listeners[i].fn.call(listeners[i].context, a1, a2);break;
+	        default:
+	          if (!args) for (j = 1, args = new Array(len - 1); j < len; j++) {
+	            args[j - 1] = arguments[j];
+	          }
+
+	          listeners[i].fn.apply(listeners[i].context, args);
+	      }
+	    }
+	  }
+
+	  return true;
+	};
+
+	/**
+	 * Register a new EventListener for the given event.
+	 *
+	 * @param {String} event Name of the event.
+	 * @param {Function} fn Callback function.
+	 * @param {Mixed} [context=this] The context of the function.
+	 * @api public
+	 */
+	EventEmitter.prototype.on = function on(event, fn, context) {
+	  var listener = new EE(fn, context || this),
+	      evt = prefix ? prefix + event : event;
+
+	  if (!this._events) this._events = prefix ? {} : Object.create(null);
+	  if (!this._events[evt]) this._events[evt] = listener;else {
+	    if (!this._events[evt].fn) this._events[evt].push(listener);else this._events[evt] = [this._events[evt], listener];
+	  }
+
+	  return this;
+	};
+
+	/**
+	 * Add an EventListener that's only called once.
+	 *
+	 * @param {String} event Name of the event.
+	 * @param {Function} fn Callback function.
+	 * @param {Mixed} [context=this] The context of the function.
+	 * @api public
+	 */
+	EventEmitter.prototype.once = function once(event, fn, context) {
+	  var listener = new EE(fn, context || this, true),
+	      evt = prefix ? prefix + event : event;
+
+	  if (!this._events) this._events = prefix ? {} : Object.create(null);
+	  if (!this._events[evt]) this._events[evt] = listener;else {
+	    if (!this._events[evt].fn) this._events[evt].push(listener);else this._events[evt] = [this._events[evt], listener];
+	  }
+
+	  return this;
+	};
+
+	/**
+	 * Remove event listeners.
+	 *
+	 * @param {String} event The event we want to remove.
+	 * @param {Function} fn The listener that we need to find.
+	 * @param {Mixed} context Only remove listeners matching this context.
+	 * @param {Boolean} once Only remove once listeners.
+	 * @api public
+	 */
+	EventEmitter.prototype.removeListener = function removeListener(event, fn, context, once) {
+	  var evt = prefix ? prefix + event : event;
+
+	  if (!this._events || !this._events[evt]) return this;
+
+	  var listeners = this._events[evt],
+	      events = [];
+
+	  if (fn) {
+	    if (listeners.fn) {
+	      if (listeners.fn !== fn || once && !listeners.once || context && listeners.context !== context) {
+	        events.push(listeners);
+	      }
+	    } else {
+	      for (var i = 0, length = listeners.length; i < length; i++) {
+	        if (listeners[i].fn !== fn || once && !listeners[i].once || context && listeners[i].context !== context) {
+	          events.push(listeners[i]);
+	        }
+	      }
+	    }
+	  }
+
+	  //
+	  // Reset the array, or remove it completely if we have no more listeners.
+	  //
+	  if (events.length) {
+	    this._events[evt] = events.length === 1 ? events[0] : events;
+	  } else {
+	    delete this._events[evt];
+	  }
+
+	  return this;
+	};
+
+	/**
+	 * Remove all listeners or only the listeners for the specified event.
+	 *
+	 * @param {String} event The event want to remove all listeners for.
+	 * @api public
+	 */
+	EventEmitter.prototype.removeAllListeners = function removeAllListeners(event) {
+	  if (!this._events) return this;
+
+	  if (event) delete this._events[prefix ? prefix + event : event];else this._events = prefix ? {} : Object.create(null);
+
+	  return this;
+	};
+
+	//
+	// Alias methods names because people roll like that.
+	//
+	EventEmitter.prototype.off = EventEmitter.prototype.removeListener;
+	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+
+	//
+	// This function doesn't apply anymore.
+	//
+	EventEmitter.prototype.setMaxListeners = function setMaxListeners() {
+	  return this;
+	};
+
+	//
+	// Expose the prefix.
+	//
+	EventEmitter.prefixed = prefix;
+
+	//
+	// Expose the module.
+	//
+	if (true) {
+	  module.exports = EventEmitter;
+	}
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * Internal module used to create static and instance join methods
+	 */
+
+	"use strict";
+
+	var createStore = __webpack_require__(178),
+	    _ = __webpack_require__(175);
+
+	var slice = Array.prototype.slice,
+	    strategyMethodNames = {
+	    strict: "joinStrict",
+	    first: "joinLeading",
+	    last: "joinTrailing",
+	    all: "joinConcat"
+	};
+
+	/**
+	 * Used in `index.js` to create the static join methods
+	 * @param {String} strategy Which strategy to use when tracking listenable trigger arguments
+	 * @returns {Function} A static function which returns a store with a join listen on the given listenables using the given strategy
+	 */
+	exports.staticJoinCreator = function (strategy) {
+	    return function () /* listenables... */{
+	        var listenables = slice.call(arguments);
+	        return createStore({
+	            init: function init() {
+	                this[strategyMethodNames[strategy]].apply(this, listenables.concat("triggerAsync"));
+	            }
+	        });
+	    };
+	};
+
+	/**
+	 * Used in `ListenerMethods.js` to create the instance join methods
+	 * @param {String} strategy Which strategy to use when tracking listenable trigger arguments
+	 * @returns {Function} An instance method which sets up a join listen on the given listenables using the given strategy
+	 */
+	exports.instanceJoinCreator = function (strategy) {
+	    return function () /* listenables..., callback*/{
+	        _.throwIf(arguments.length < 2, "Cannot create a join with less than 2 listenables!");
+	        var listenables = slice.call(arguments),
+	            callback = listenables.pop(),
+	            numberOfListenables = listenables.length,
+	            join = {
+	            numberOfListenables: numberOfListenables,
+	            callback: this[callback] || callback,
+	            listener: this,
+	            strategy: strategy
+	        },
+	            i,
+	            cancels = [],
+	            subobj;
+	        for (i = 0; i < numberOfListenables; i++) {
+	            _.throwIf(this.validateListening(listenables[i]));
+	        }
+	        for (i = 0; i < numberOfListenables; i++) {
+	            cancels.push(listenables[i].listen(newListener(i, join), this));
+	        }
+	        reset(join);
+	        subobj = { listenable: listenables };
+	        subobj.stop = makeStopper(subobj, cancels, this);
+	        this.subscriptions = (this.subscriptions || []).concat(subobj);
+	        return subobj;
+	    };
+	};
+
+	// ---- internal join functions ----
+
+	function makeStopper(subobj, cancels, context) {
+	    return function () {
+	        var i,
+	            subs = context.subscriptions,
+	            index = subs ? subs.indexOf(subobj) : -1;
+	        _.throwIf(index === -1, "Tried to remove join already gone from subscriptions list!");
+	        for (i = 0; i < cancels.length; i++) {
+	            cancels[i]();
+	        }
+	        subs.splice(index, 1);
+	    };
+	}
+
+	function reset(join) {
+	    join.listenablesEmitted = new Array(join.numberOfListenables);
+	    join.args = new Array(join.numberOfListenables);
+	}
+
+	function newListener(i, join) {
+	    return function () {
+	        var callargs = slice.call(arguments);
+	        if (join.listenablesEmitted[i]) {
+	            switch (join.strategy) {
+	                case "strict":
+	                    throw new Error("Strict join failed because listener triggered twice.");
+	                case "last":
+	                    join.args[i] = callargs;break;
+	                case "all":
+	                    join.args[i].push(callargs);
+	            }
+	        } else {
+	            join.listenablesEmitted[i] = true;
+	            join.args[i] = join.strategy === "all" ? [callargs] : callargs;
+	        }
+	        emitIfAllListenablesEmitted(join);
+	    };
+	}
+
+	function emitIfAllListenablesEmitted(join) {
+	    for (var i = 0; i < join.numberOfListenables; i++) {
+	        if (!join.listenablesEmitted[i]) {
+	            return;
+	        }
+	    }
+	    join.callback.apply(join.listener, join.args);
+	    reset(join);
+	}
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _ = __webpack_require__(175),
+	    Keep = __webpack_require__(179),
+	    mixer = __webpack_require__(180),
+	    bindMethods = __webpack_require__(181);
+
+	var allowed = { preEmit: 1, shouldEmit: 1 };
+
+	/**
+	 * Creates an event emitting Data Store. It is mixed in with functions
+	 * from the `ListenerMethods` and `PublisherMethods` mixins. `preEmit`
+	 * and `shouldEmit` may be overridden in the definition object.
+	 *
+	 * @param {Object} definition The data store object definition
+	 * @returns {Store} A data store instance
+	 */
+	module.exports = function (definition) {
+
+	    var StoreMethods = __webpack_require__(182),
+	        PublisherMethods = __webpack_require__(183),
+	        ListenerMethods = __webpack_require__(174);
+
+	    definition = definition || {};
+
+	    for (var a in StoreMethods) {
+	        if (!allowed[a] && (PublisherMethods[a] || ListenerMethods[a])) {
+	            throw new Error("Cannot override API method " + a + " in Reflux.StoreMethods. Use another method name or override it on Reflux.PublisherMethods / Reflux.ListenerMethods instead.");
+	        }
+	    }
+
+	    for (var d in definition) {
+	        if (!allowed[d] && (PublisherMethods[d] || ListenerMethods[d])) {
+	            throw new Error("Cannot override API method " + d + " in store creation. Use another method name or override it on Reflux.PublisherMethods / Reflux.ListenerMethods instead.");
+	        }
+	    }
+
+	    definition = mixer(definition);
+
+	    function Store() {
+	        var i = 0,
+	            arr;
+	        this.subscriptions = [];
+	        this.emitter = new _.EventEmitter();
+	        this.eventLabel = "change";
+	        bindMethods(this, definition);
+	        if (this.init && _.isFunction(this.init)) {
+	            this.init();
+	        }
+	        if (this.listenables) {
+	            arr = [].concat(this.listenables);
+	            for (; i < arr.length; i++) {
+	                this.listenToMany(arr[i]);
+	            }
+	        }
+	    }
+
+	    _.extend(Store.prototype, ListenerMethods, PublisherMethods, StoreMethods, definition);
+
+	    var store = new Store();
+	    Keep.createdStores.push(store);
+
+	    return store;
+	};
+
+/***/ },
+/* 179 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	exports.createdStores = [];
+
+	exports.createdActions = [];
+
+	exports.reset = function () {
+	    while (exports.createdStores.length) {
+	        exports.createdStores.pop();
+	    }
+	    while (exports.createdActions.length) {
+	        exports.createdActions.pop();
+	    }
+	};
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _ = __webpack_require__(175);
+
+	module.exports = function mix(def) {
+	    var composed = {
+	        init: [],
+	        preEmit: [],
+	        shouldEmit: []
+	    };
+
+	    var updated = (function mixDef(mixin) {
+	        var mixed = {};
+	        if (mixin.mixins) {
+	            mixin.mixins.forEach(function (subMixin) {
+	                _.extend(mixed, mixDef(subMixin));
+	            });
+	        }
+	        _.extend(mixed, mixin);
+	        Object.keys(composed).forEach(function (composable) {
+	            if (mixin.hasOwnProperty(composable)) {
+	                composed[composable].push(mixin[composable]);
+	            }
+	        });
+	        return mixed;
+	    })(def);
+
+	    if (composed.init.length > 1) {
+	        updated.init = function () {
+	            var args = arguments;
+	            composed.init.forEach(function (init) {
+	                init.apply(this, args);
+	            }, this);
+	        };
+	    }
+	    if (composed.preEmit.length > 1) {
+	        updated.preEmit = function () {
+	            return composed.preEmit.reduce((function (args, preEmit) {
+	                var newValue = preEmit.apply(this, args);
+	                return newValue === undefined ? args : [newValue];
+	            }).bind(this), arguments);
+	        };
+	    }
+	    if (composed.shouldEmit.length > 1) {
+	        updated.shouldEmit = function () {
+	            var args = arguments;
+	            return !composed.shouldEmit.some(function (shouldEmit) {
+	                return !shouldEmit.apply(this, args);
+	            }, this);
+	        };
+	    }
+	    Object.keys(composed).forEach(function (composable) {
+	        if (composed[composable].length === 1) {
+	            updated[composable] = composed[composable][0];
+	        }
+	    });
+
+	    return updated;
+	};
+
+/***/ },
+/* 181 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	module.exports = function (store, definition) {
+	    for (var name in definition) {
+	        if (Object.getOwnPropertyDescriptor && Object.defineProperty) {
+	            var propertyDescriptor = Object.getOwnPropertyDescriptor(definition, name);
+
+	            if (!propertyDescriptor.value || typeof propertyDescriptor.value !== "function" || !definition.hasOwnProperty(name)) {
+	                continue;
+	            }
+
+	            store[name] = definition[name].bind(store);
+	        } else {
+	            var property = definition[name];
+
+	            if (typeof property !== "function" || !definition.hasOwnProperty(name)) {
+	                continue;
+	            }
+
+	            store[name] = property.bind(store);
+	        }
+	    }
+
+	    return store;
+	};
+
+/***/ },
+/* 182 */
+/***/ function(module, exports) {
+
+	/**
+	 * A module of methods that you want to include in all stores.
+	 * This module is consumed by `createStore`.
+	 */
+	"use strict";
+
+	module.exports = {};
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _ = __webpack_require__(175);
+
+	/**
+	 * A module of methods for object that you want to be able to listen to.
+	 * This module is consumed by `createStore` and `createAction`
+	 */
+	module.exports = {
+
+	    /**
+	     * Hook used by the publisher that is invoked before emitting
+	     * and before `shouldEmit`. The arguments are the ones that the action
+	     * is invoked with. If this function returns something other than
+	     * undefined, that will be passed on as arguments for shouldEmit and
+	     * emission.
+	     */
+	    preEmit: function preEmit() {},
+
+	    /**
+	     * Hook used by the publisher after `preEmit` to determine if the
+	     * event should be emitted with given arguments. This may be overridden
+	     * in your application, default implementation always returns true.
+	     *
+	     * @returns {Boolean} true if event should be emitted
+	     */
+	    shouldEmit: function shouldEmit() {
+	        return true;
+	    },
+
+	    /**
+	     * Subscribes the given callback for action triggered
+	     *
+	     * @param {Function} callback The callback to register as event handler
+	     * @param {Mixed} [optional] bindContext The context to bind the callback with
+	     * @returns {Function} Callback that unsubscribes the registered event handler
+	     */
+	    listen: function listen(callback, bindContext) {
+	        bindContext = bindContext || this;
+	        var eventHandler = function eventHandler(args) {
+	            if (aborted) {
+	                return;
+	            }
+	            callback.apply(bindContext, args);
+	        },
+	            me = this,
+	            aborted = false;
+	        this.emitter.addListener(this.eventLabel, eventHandler);
+	        return function () {
+	            aborted = true;
+	            me.emitter.removeListener(me.eventLabel, eventHandler);
+	        };
+	    },
+
+	    /**
+	     * Publishes an event using `this.emitter` (if `shouldEmit` agrees)
+	     */
+	    trigger: function trigger() {
+	        var args = arguments,
+	            pre = this.preEmit.apply(this, args);
+	        args = pre === undefined ? args : _.isArguments(pre) ? pre : [].concat(pre);
+	        if (this.shouldEmit.apply(this, args)) {
+	            this.emitter.emit(this.eventLabel, args);
+	        }
+	    },
+
+	    /**
+	     * Tries to publish the event on the next tick
+	     */
+	    triggerAsync: function triggerAsync() {
+	        var args = arguments,
+	            me = this;
+	        _.nextTick(function () {
+	            me.trigger.apply(me, args);
+	        });
+	    },
+
+	    /**
+	     * Wraps the trigger mechanism with a deferral function.
+	     *
+	     * @param {Function} callback the deferral function,
+	     *        first argument is the resolving function and the
+	     *        rest are the arguments provided from the previous
+	     *        trigger invocation
+	     */
+	    deferWith: function deferWith(callback) {
+	        var oldTrigger = this.trigger,
+	            ctx = this,
+	            resolver = function resolver() {
+	            oldTrigger.apply(ctx, arguments);
+	        };
+	        this.trigger = function () {
+	            callback.apply(ctx, [resolver].concat([].splice.call(arguments, 0)));
+	        };
+	    }
+
+	};
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _ = __webpack_require__(175),
+	    ActionMethods = __webpack_require__(173),
+	    PublisherMethods = __webpack_require__(183),
+	    Keep = __webpack_require__(179);
+
+	var allowed = { preEmit: 1, shouldEmit: 1 };
+
+	/**
+	 * Creates an action functor object. It is mixed in with functions
+	 * from the `PublisherMethods` mixin. `preEmit` and `shouldEmit` may
+	 * be overridden in the definition object.
+	 *
+	 * @param {Object} definition The action object definition
+	 */
+	var createAction = function createAction(definition) {
+
+	    definition = definition || {};
+	    if (!_.isObject(definition)) {
+	        definition = { actionName: definition };
+	    }
+
+	    for (var a in ActionMethods) {
+	        if (!allowed[a] && PublisherMethods[a]) {
+	            throw new Error("Cannot override API method " + a + " in Reflux.ActionMethods. Use another method name or override it on Reflux.PublisherMethods instead.");
+	        }
+	    }
+
+	    for (var d in definition) {
+	        if (!allowed[d] && PublisherMethods[d]) {
+	            throw new Error("Cannot override API method " + d + " in action creation. Use another method name or override it on Reflux.PublisherMethods instead.");
+	        }
+	    }
+
+	    definition.children = definition.children || [];
+	    if (definition.asyncResult) {
+	        definition.children = definition.children.concat(["completed", "failed"]);
+	    }
+
+	    var i = 0,
+	        childActions = {};
+	    for (; i < definition.children.length; i++) {
+	        var name = definition.children[i];
+	        childActions[name] = createAction(name);
+	    }
+
+	    var context = _.extend({
+	        eventLabel: "action",
+	        emitter: new _.EventEmitter(),
+	        _isAction: true
+	    }, PublisherMethods, ActionMethods, definition);
+
+	    var functor = function functor() {
+	        var triggerType = functor.sync ? "trigger" : "triggerAsync";
+	        return functor[triggerType].apply(functor, arguments);
+	    };
+
+	    _.extend(functor, childActions, context);
+
+	    Keep.createdActions.push(functor);
+
+	    return functor;
+	};
+
+	module.exports = createAction;
+
+/***/ },
+/* 185 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var ListenerMethods = __webpack_require__(174),
+	    ListenerMixin = __webpack_require__(186),
+	    _ = __webpack_require__(175);
+
+	module.exports = function (listenable, key) {
+
+	    _.throwIf(typeof key === 'undefined', 'Reflux.connect() requires a key.');
+
+	    return {
+	        getInitialState: function getInitialState() {
+	            if (!_.isFunction(listenable.getInitialState)) {
+	                return {};
+	            }
+
+	            return _.object([key], [listenable.getInitialState()]);
+	        },
+	        componentDidMount: function componentDidMount() {
+	            var me = this;
+
+	            _.extend(me, ListenerMethods);
+
+	            this.listenTo(listenable, function (v) {
+	                me.setState(_.object([key], [v]));
+	            });
+	        },
+	        componentWillUnmount: ListenerMixin.componentWillUnmount
+	    };
+	};
+
+/***/ },
+/* 186 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _ = __webpack_require__(175),
+	    ListenerMethods = __webpack_require__(174);
+
+	/**
+	 * A module meant to be consumed as a mixin by a React component. Supplies the methods from
+	 * `ListenerMethods` mixin and takes care of teardown of subscriptions.
+	 * Note that if you're using the `connect` mixin you don't need this mixin, as connect will
+	 * import everything this mixin contains!
+	 */
+	module.exports = _.extend({
+
+	  /**
+	   * Cleans up all listener previously registered.
+	   */
+	  componentWillUnmount: ListenerMethods.stopListeningToAll
+
+	}, ListenerMethods);
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var ListenerMethods = __webpack_require__(174),
+	    ListenerMixin = __webpack_require__(186),
+	    _ = __webpack_require__(175);
+
+	module.exports = function (listenable, key, filterFunc) {
+
+	    _.throwIf(_.isFunction(key), 'Reflux.connectFilter() requires a key.');
+
+	    return {
+	        getInitialState: function getInitialState() {
+	            if (!_.isFunction(listenable.getInitialState)) {
+	                return {};
+	            }
+
+	            // Filter initial payload from store.
+	            var result = filterFunc.call(this, listenable.getInitialState());
+	            if (typeof result !== 'undefined') {
+	                return _.object([key], [result]);
+	            } else {
+	                return {};
+	            }
+	        },
+	        componentDidMount: function componentDidMount() {
+	            var me = this;
+
+	            _.extend(this, ListenerMethods);
+
+	            this.listenTo(listenable, function (value) {
+	                var result = filterFunc.call(me, value);
+	                me.setState(_.object([key], [result]));
+	            });
+	        },
+	        componentWillUnmount: ListenerMixin.componentWillUnmount
+	    };
+	};
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var ListenerMethods = __webpack_require__(174);
+
+	/**
+	 * A mixin factory for a React component. Meant as a more convenient way of using the `ListenerMixin`,
+	 * without having to manually set listeners in the `componentDidMount` method.
+	 *
+	 * @param {Action|Store} listenable An Action or Store that should be
+	 *  listened to.
+	 * @param {Function|String} callback The callback to register as event handler
+	 * @param {Function|String} defaultCallback The callback to register as default handler
+	 * @returns {Object} An object to be used as a mixin, which sets up the listener for the given listenable.
+	 */
+	module.exports = function (listenable, callback, initial) {
+	    return {
+	        /**
+	         * Set up the mixin before the initial rendering occurs. Import methods from `ListenerMethods`
+	         * and then make the call to `listenTo` with the arguments provided to the factory function
+	         */
+	        componentDidMount: function componentDidMount() {
+	            for (var m in ListenerMethods) {
+	                if (this[m] !== ListenerMethods[m]) {
+	                    if (this[m]) {
+	                        throw "Can't have other property '" + m + "' when using Reflux.listenTo!";
+	                    }
+	                    this[m] = ListenerMethods[m];
+	                }
+	            }
+	            this.listenTo(listenable, callback, initial);
+	        },
+	        /**
+	         * Cleans up all listener previously registered.
+	         */
+	        componentWillUnmount: ListenerMethods.stopListeningToAll
+	    };
+	};
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var ListenerMethods = __webpack_require__(174);
+
+	/**
+	 * A mixin factory for a React component. Meant as a more convenient way of using the `listenerMixin`,
+	 * without having to manually set listeners in the `componentDidMount` method. This version is used
+	 * to automatically set up a `listenToMany` call.
+	 *
+	 * @param {Object} listenables An object of listenables
+	 * @returns {Object} An object to be used as a mixin, which sets up the listeners for the given listenables.
+	 */
+	module.exports = function (listenables) {
+	    return {
+	        /**
+	         * Set up the mixin before the initial rendering occurs. Import methods from `ListenerMethods`
+	         * and then make the call to `listenTo` with the arguments provided to the factory function
+	         */
+	        componentDidMount: function componentDidMount() {
+	            for (var m in ListenerMethods) {
+	                if (this[m] !== ListenerMethods[m]) {
+	                    if (this[m]) {
+	                        throw "Can't have other property '" + m + "' when using Reflux.listenToMany!";
+	                    }
+	                    this[m] = ListenerMethods[m];
+	                }
+	            }
+	            this.listenToMany(listenables);
+	        },
+	        /**
+	         * Cleans up all listener previously registered.
+	         */
+	        componentWillUnmount: ListenerMethods.stopListeningToAll
+	    };
+	};
+
+/***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	var _reflux = __webpack_require__(171);
+
+	var _reflux2 = _interopRequireDefault(_reflux);
+
+	var _actionsPhotos = __webpack_require__(170);
+
+	var _actionsPhotos2 = _interopRequireDefault(_actionsPhotos);
+
+	var Store = _reflux2["default"].createStore({
+	  listenables: _actionsPhotos2["default"],
+
+	  onSearchUpdate: function onSearchUpdate(query) {
+	    var _this = this;
+
+	    this.trigger("start-searching");
+	    this.searchImages(query).then(function (data) {
+	      return _this.trigger(data);
+	    });
+	  },
+
+	  searchImages: function searchImages(query) {
+
+	    return fetch("http://localhost:5000/api/search?q=" + query, {
+	      mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' })
+	    }).then(function (response) {
+	      return response.json();
+	    })["catch"](function (err) {
+	      return console.log(err);
+	    });
+	  }
+	});
+
+	exports["default"] = Store;
+	module.exports = exports["default"];
+
+/***/ },
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20505,11 +22066,13 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ShareImg = __webpack_require__(171);
+	var _ShareImg = __webpack_require__(192);
 
 	var _ShareImg2 = _interopRequireDefault(_ShareImg);
 
-	var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "7.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "7.jpg"];
+	var _storagePhotos = __webpack_require__(190);
+
+	var _storagePhotos2 = _interopRequireDefault(_storagePhotos);
 
 	var Payload = (function (_React$Component) {
 	  _inherits(Payload, _React$Component);
@@ -20518,13 +22081,31 @@
 	    _classCallCheck(this, Payload);
 
 	    _get(Object.getPrototypeOf(Payload.prototype), "constructor", this).call(this, props);
-	    this.state = {};
+	    this.state = { images: [] };
 	  }
 
 	  _createClass(Payload, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.unsubscribe = _storagePhotos2["default"].listen(this.onStatusChange.bind(this));
+	    }
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {
+	      this.unsubscribe();
+	    }
+	  }, {
+	    key: "onStatusChange",
+	    value: function onStatusChange(data) {
+	      if (data === "start-searching") {
+	        this.setState({ searching: true });
+	      } else {
+	        this.setState({ searching: false, images: data });
+	      }
+	    }
+	  }, {
 	    key: "showImage",
 	    value: function showImage(img, ev) {
-	      console.log(ev.currentTarget.getBoundingClientRect());
 	      this.setState({
 	        activeImg: this.state.activeImg === img ? null : img,
 	        activePosition: ev.currentTarget.getBoundingClientRect()
@@ -20538,18 +22119,19 @@
 	      var _state = this.state;
 	      var activeImg = _state.activeImg;
 	      var activePosition = _state.activePosition;
+	      var images = _state.images;
 
 	      return _react2["default"].createElement(
 	        "div",
-	        { className: "payload " },
-	        images.map(function (img, i) {
+	        { className: "payload " + (images.length === 0 && "payload_empty") + " " + (this.state.searching && "payload_searching") },
+	        images.map(function (img) {
 	          return _react2["default"].createElement(
 	            "div",
 	            {
 	              className: "payload__image-wrapper " + (activeImg === img && "payload__image-wrapper_active"),
-	              key: img + i,
+	              key: img.id,
 	              onClick: _this.showImage.bind(_this, img) },
-	            _react2["default"].createElement("img", { src: "/images/" + img, alt: "" }),
+	            _react2["default"].createElement("img", { src: img.thumbnail.url, alt: "" }),
 	            activeImg === img && _react2["default"].createElement(_ShareImg2["default"], { deltaLeft: -activePosition.left, img: img })
 	          );
 	        })
@@ -20562,10 +22144,9 @@
 
 	exports["default"] = Payload;
 	module.exports = exports["default"];
-	/*payload_empty*/
 
 /***/ },
-/* 171 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -20599,16 +22180,36 @@
 	  }
 
 	  _createClass(ShareImg, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.refs.shareCode.select();
+	      this.refs.shareCode.focus();
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
+	      var img = this.props.img;
+
+	      var shareCod = "<figure data-meted=\"true\" data-meted-image-id=\"" + img.id + "\"><script src=\"https://app.meted.co/w.js\"></script></figure>";
+
+	      var icon = _react2["default"].createElement(
+	        "svg",
+	        { style: { marginRight: 10 }, width: "15", height: "12", viewBox: "0 3 15 12", xmlns: "http://www.w3.org/2000/svg" },
+	        _react2["default"].createElement("path", { d: "M12.925 3.242l-6.82 7.88L1.91 6.27.337 8.093l5.77 6.666 8.39-9.697", fill: "#00FF9B", fillRule: "evenodd" })
+	      );
+
 	      return _react2["default"].createElement(
 	        "div",
-	        { className: "share-img",
+	        {
+	          className: "share-img",
+	          onClick: function (ev) {
+	            return ev.stopPropagation();
+	          },
 	          style: {
 	            left: this.props.deltaLeft
 	          }
 	        },
-	        _react2["default"].createElement("img", { className: "share-img__img", src: "/images/" + this.props.img, alt: "" }),
+	        _react2["default"].createElement("img", { className: "share-img__img", src: img.largeThumbnail.url, alt: "" }),
 	        _react2["default"].createElement(
 	          "div",
 	          { className: "share-img__wrapper" },
@@ -20620,7 +22221,11 @@
 	          _react2["default"].createElement(
 	            "div",
 	            { className: "share-img__value" },
-	            "James Blake"
+	            _react2["default"].createElement(
+	              "a",
+	              { target: "__blank", href: img.url },
+	              img.owner.realName
+	            )
 	          ),
 	          _react2["default"].createElement(
 	            "div",
@@ -20630,7 +22235,22 @@
 	          _react2["default"].createElement(
 	            "div",
 	            { className: "share-img__value" },
-	            "CC0"
+	            img.license.shortName
+	          ),
+	          img.viewCount && _react2["default"].createElement(
+	            "div",
+	            null,
+	            _react2["default"].createElement(
+	              "div",
+	              { className: "share-img__label" },
+	              "Views from your site"
+	            ),
+	            _react2["default"].createElement(
+	              "div",
+	              { className: "share-img__value" },
+	              img.viewCount,
+	              " views"
+	            )
 	          ),
 	          _react2["default"].createElement(
 	            "div",
@@ -20640,21 +22260,13 @@
 	          _react2["default"].createElement(
 	            "div",
 	            { className: "share-img__tags" },
-	            _react2["default"].createElement(
-	              "span",
-	              { className: "share-img__tag" },
-	              "Desert"
-	            ),
-	            _react2["default"].createElement(
-	              "span",
-	              { className: "share-img__tag" },
-	              "Australia"
-	            ),
-	            _react2["default"].createElement(
-	              "span",
-	              { className: "share-img__tag" },
-	              "Hot"
-	            )
+	            img.tags.map(function (tag) {
+	              return _react2["default"].createElement(
+	                "span",
+	                { className: "share-img__tag" },
+	                tag
+	              );
+	            })
 	          ),
 	          _react2["default"].createElement(
 	            "h4",
@@ -20666,7 +22278,7 @@
 	            { className: "share-img__description" },
 	            "Reduce any possible legal issues by using this code"
 	          ),
-	          _react2["default"].createElement("textarea", { className: "share-img__code", defaultValue: "<figure class=\"meted.co\" data-meted-image-id=\"1\"><script src=\"index.js\" data-user-id=\"1\"></script></figure>" }),
+	          _react2["default"].createElement("textarea", { ref: "shareCode", className: "share-img__code", defaultValue: shareCod }),
 	          _react2["default"].createElement(
 	            "button",
 	            { className: "share-img__share-btn" },
@@ -20678,26 +22290,39 @@
 	            _react2["default"].createElement(
 	              "div",
 	              { className: "share-img__advantage" },
+	              icon,
 	              "Network takedown tracking"
 	            ),
 	            _react2["default"].createElement(
 	              "div",
 	              { className: "share-img__advantage" },
-	              "Licence snaphot: ",
-	              _react2["default"].createElement(
-	                "a",
-	                { href: "#" },
-	                "CC 2.0"
+	              icon,
+	              "Licence snaphot",
+	              img.screenshot && _react2["default"].createElement(
+	                "span",
+	                null,
+	                ": ",
+	                _react2["default"].createElement(
+	                  "a",
+	                  { href: img.screenshot.url, target: "__blank" },
+	                  "View"
+	                )
 	              )
 	            ),
 	            _react2["default"].createElement(
 	              "div",
 	              { className: "share-img__advantage" },
-	              "Usage risk tracking: ",
-	              _react2["default"].createElement(
-	                "a",
-	                { href: "#" },
-	                "Low"
+	              icon,
+	              "Usage risk tracking",
+	              img.riskLevel && _react2["default"].createElement(
+	                "span",
+	                null,
+	                ": ",
+	                _react2["default"].createElement(
+	                  "a",
+	                  { href: "#", title: img.riskLevel.explanation },
+	                  img.riskLevel.text
+	                )
 	              )
 	            )
 	          ),
@@ -20720,6 +22345,108 @@
 	})(_react2["default"].Component);
 
 	exports["default"] = ShareImg;
+	module.exports = exports["default"];
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _ShareImg = __webpack_require__(192);
+
+	var _ShareImg2 = _interopRequireDefault(_ShareImg);
+
+	var MyPhotos = (function (_React$Component) {
+	  _inherits(MyPhotos, _React$Component);
+
+	  function MyPhotos(props) {
+	    _classCallCheck(this, MyPhotos);
+
+	    _get(Object.getPrototypeOf(MyPhotos.prototype), "constructor", this).call(this, props);
+	    this.state = {
+	      images: []
+	    };
+	  }
+
+	  _createClass(MyPhotos, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var _this = this;
+
+	      fetch("https://app.meted.co/api/me/stats", { mode: 'cors', headers: new Headers({ 'Content-Type': 'application/json' }) }).then(function (response) {
+	        return response.json();
+	      })["catch"](function (err) {
+	        return console.log(err);
+	      }).then(function (data) {
+	        return _this.setState({ images: data });
+	      });
+	    }
+	  }, {
+	    key: "showImage",
+	    value: function showImage(img, ev) {
+	      this.setState({
+	        activeImg: this.state.activeImg === img ? null : img,
+	        activePosition: ev.currentTarget.getBoundingClientRect()
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var _this2 = this;
+
+	      var _state = this.state;
+	      var images = _state.images;
+	      var activeImg = _state.activeImg;
+	      var activePosition = _state.activePosition;
+
+	      console.log(images);
+
+	      return _react2["default"].createElement(
+	        "div",
+	        { className: "payload" },
+	        _react2["default"].createElement(
+	          "h3",
+	          { className: "payload__title" },
+	          "Photos that you use"
+	        ),
+	        images.map(function (img) {
+	          return _react2["default"].createElement(
+	            "div",
+	            {
+	              className: "payload__image-wrapper " + (activeImg === img && "payload__image-wrapper_active"),
+	              key: img.id,
+	              onClick: _this2.showImage.bind(_this2, img) },
+	            _react2["default"].createElement("img", { src: img.thumbnail.url, alt: "" }),
+	            activeImg === img && _react2["default"].createElement(_ShareImg2["default"], { deltaLeft: -activePosition.left, img: img })
+	          );
+	        })
+	      );
+	    }
+	  }]);
+
+	  return MyPhotos;
+	})(_react2["default"].Component);
+
+	exports["default"] = MyPhotos;
 	module.exports = exports["default"];
 
 /***/ }
