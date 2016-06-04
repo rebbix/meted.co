@@ -13,9 +13,7 @@ class ShareImg extends React.Component {
   
   render () {
     let {img} = this.props;
-
-
-
+    
     let shareCod = `<figure data-meted="true" data-meted-image-id="${img.id}"><script src="https://app.meted.co/w.js"></script></figure>`;
 
     return (
@@ -38,9 +36,9 @@ class ShareImg extends React.Component {
 
             <div className="share-img__label">Tags</div>
             <div className="share-img__tags">
-              <span className="share-img__tag">Desert</span>
-              <span className="share-img__tag">Australia</span>
-              <span className="share-img__tag">Hot</span>
+              {img.tags.map(tag => (
+                  <span className="share-img__tag">{tag}</span>
+              ))}
             </div>
 
             <h4 className="share-img__title">Use this photo on your site</h4>

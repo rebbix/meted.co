@@ -5,6 +5,7 @@ var Store = Reflux.createStore({
   listenables: Actions,
 
   onSearchUpdate (query) {
+    this.trigger("start-searching");
     this
       .searchImages(query)
       .then((data)=> this.trigger(data))

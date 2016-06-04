@@ -8,16 +8,15 @@ class Payload extends React.Component {
     this.state = {images: []};
   }
 
-  componentDidMount () {
-    this.unsubscribe = Store.listen(this.onStatusChange.bind(this));
-  }
+  componentDidMount () {this.unsubscribe = Store.listen(this.onStatusChange.bind(this)); }
+  componentWillUnmount() { this.unsubscribe(); }
+  onStatusChange (data) {
+    if (data === "start-searching") {
+      this.setState({ searching: true })
+    } else {
+      this.setState({ searching: false,  images: data});
+    }
 
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
-
-  onStatusChange (images) {
-    this.setState({images});
   }
 
   showImage (img, ev) {
@@ -31,7 +30,7 @@ class Payload extends React.Component {
     let {activeImg, activePosition, images} = this.state;
 
     return (
-      <div className="payload ">{/*payload_empty*/}
+      <div className={`payload ${images.length === 0 && "payload_empty"} ${this.state.searching && "payload_searching"}`}>
         {images.map (img => (
             <div
               className={`payload__image-wrapper ${activeImg === img && "payload__image-wrapper_active"}`}
