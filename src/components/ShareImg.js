@@ -8,12 +8,14 @@ class ShareImg extends React.Component {
 
   render () {
     return (
-        <div className="share-img"
+        <div
+          className="share-img"
+          onClick={ev => ev.stopPropagation()}
           style = {{
             left: this.props.deltaLeft
           }}
         >
-          <img className="share-img__img" src={`/images/${this.props.img}`} alt=""/>
+          <img className="share-img__img" src={this.props.img} alt=""/>
           <div className="share-img__wrapper">
             <div className="share-img__label">Author</div>
             <div className="share-img__value">James Blake</div>

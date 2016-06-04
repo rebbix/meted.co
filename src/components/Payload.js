@@ -1,29 +1,29 @@
 import React from "react";
 import ShareImg from "./ShareImg";
 
-let images = [
-    "1.jpg",
-    "2.jpg",
-    "3.jpg",
-    "4.jpg",
-    "5.jpg",
-    "7.jpg",
-    "1.jpg",
-    "2.jpg",
-    "3.jpg",
-    "4.jpg",
-    "5.jpg",
-    "7.jpg",
-]
+import Actions from "../actions/Photos";
+import Store from "../storage/Photos";
+
 
 class Payload extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {images: []};
+  }
+
+  componentDidMount () {
+    this.unsubscribe = Store.listen(this.onStatusChange.bind(this));
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
+  onStatusChange (images) {
+    this.setState({images});
   }
 
   showImage (img, ev) {
-    console.log(ev.currentTarget.getBoundingClientRect());
     this.setState({
       activeImg: this.state.activeImg === img ? null : img,
       activePosition: ev.currentTarget.getBoundingClientRect()
@@ -31,17 +31,20 @@ class Payload extends React.Component {
   }
 
   render () {
-    let {activeImg, activePosition} = this.state;
+    let {activeImg, activePosition, images} = this.state;
+
+    console.log(images);
+
     return (
       <div className="payload ">{/*payload_empty*/}
-        {images.map ((img, i) => (
+        {images.map (img => (
             <div
               className={`payload__image-wrapper ${activeImg === img && "payload__image-wrapper_active"}`}
-              key={img + i}
+              key={img.id}
               onClick={this.showImage.bind(this, img)}>
-                <img src={`/images/${img}`} alt=""/>
+                <img src={img.thumbnail.url} alt=""/>
                 {activeImg === img &&
-                  <ShareImg deltaLeft={-activePosition.left} img={img}/>
+                  <ShareImg deltaLeft={-activePosition.left} img={img.image.url}/>
                 }
             </div>
         ))}

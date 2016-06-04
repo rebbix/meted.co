@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./index.js | bunyan",
-    "start-frontend": "./node_modules/.bin/webpack-dev-server",
+    "start-frontend": "./node_modules/.bin/webpack-dev-server --port 8081",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -28,12 +28,13 @@
     "lodash": "^4.13.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "reflux": "^0.4.1",
     "request-promise": "^3.0.0",
     "rethinkdbdash": "^2.3.6",
-    "webpack": "^1.12.2",
-    "webpack-dev-server": "^1.11.0",
     "screenshot-capture": "^0.2.1",
-    "tineye-api": "^0.1.1"
+    "tineye-api": "^0.1.1",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.11.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
