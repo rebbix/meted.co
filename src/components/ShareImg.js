@@ -26,6 +26,7 @@ class ShareImg extends React.Component {
         >
           <img className="share-img__img" src={img.largeThumbnail.url} alt=""/>
           <div className="share-img__wrapper">
+
             <div className="share-img__label">Author</div>
             <div className="share-img__value">
               <a target="__blank" href={img.url}>{img.owner.realName}</a>
@@ -33,6 +34,12 @@ class ShareImg extends React.Component {
 
             <div className="share-img__label">Licence</div>
             <div className="share-img__value">{img.license.shortName}</div>
+
+            {img.viewCount && <div>
+              <div className="share-img__label">Views from your site</div>
+              <div className="share-img__value">{img.viewCount} views</div>
+            </div>}
+
 
             <div className="share-img__label">Tags</div>
             <div className="share-img__tags">
@@ -53,8 +60,24 @@ class ShareImg extends React.Component {
 
             <div className="share-img__advantages">
               <div className="share-img__advantage">Network takedown tracking</div>
-              <div className="share-img__advantage">Licence snaphot</div>
-              <div className="share-img__advantage">Usage risk tracking</div>
+              <div className="share-img__advantage">
+                Licence snaphot
+                {img.screenshot &&
+                    <span>
+                      :&nbsp;
+                      <a href={img.screenshot.url} target="__blank">View</a>
+                    </span>
+                }
+              </div>
+              <div className="share-img__advantage">
+                Usage risk tracking
+                {img.riskLevel &&
+                  <span>
+                    :&nbsp;
+                    <a href="#" title={img.riskLevel.explanation}>{img.riskLevel.text}</a>
+                  </span>
+                }
+              </div>
             </div>
 
             <p className="share-img__notice">

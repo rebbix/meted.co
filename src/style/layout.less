@@ -1,10 +1,26 @@
 .layout {
   &__logo { float: right; line-height: 100px;}
   &__payload {}
+
   &__search {
     padding: 0 60px;
     line-height: 100px;
     background: #FFFFFF;
     border: 1px solid #E6E6E6;
+    &_disabled { opacity: 0.2; }
+  }
+
+  &__my-photo-link {
+    cursor: pointer;
+    display: inline;
+
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #00E086;
+    letter-spacing: -0.07px;
+    font-weight: 600;
+    margin-left: 40px;
+
+    &_active { color : rgba(0,0,0,.5); }
   }
 }
