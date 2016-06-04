@@ -1,5 +1,9 @@
 if (typeof init === "undefined") {
-  function openDialog(el) {
+  const widgetURL = "index.js";
+
+  function openDialog(el, data) {
+    let imageId = el.dataset.metedImageId; //TODO: fix it;
+
     let shareDialog =  document.createElement("div");
     shareDialog.className = "meted__share-dialog";
     shareDialog.innerHTML = `
@@ -7,21 +11,32 @@ if (typeof init === "undefined") {
         <h4 class="meted__share-title">Use this photo on your site with meted.co</h4>
         <p class="meted__share-description">Reduce any possible legal issues by using this code</p>
         
-        <textarea class="meted__share-code"><figure data-meted-image-id="2"><script src="index.js"></script></figure></textarea>
+        <textarea class="meted__share-code"><figure data-meted-image-id="${imageId}"><script src="${widgetURL}"></script></figure></textarea>
         <br/>
         <button class="meted__copy-button">COPY CODE</button>
         
         <ul class="meted__advantages">
           <li class="meted__advantage">Network takedown tracking</li>      
-          <li class="meted__advantage">Licence snaphot: <a href="#">CC 2.0</a></li>
-          <li class="meted__advantage">Usage risk tracking: <a href="#">Low</a></li>
+          <li class="meted__advantage">
+            Licence snaphot:&nbsp;
+            <a target="_blank" href="${data.license.url}">${data.license.shortName}</a>
+          </li>
+          <li class="meted__advantage">
+            Usage risk tracking:&nbsp;
+            <a target="_blank" href="#">${data.riskLevel.text}</a>
+          </li>
         </ul>
       </div>
     `;
     var closeButton = document.createElement("div");
     closeButton.className = "meted__close";
     closeButton.innerHTML = `<svg width="22" height="22" viewBox="2508 95 22 22" xmlns="http://www.w3.org/2000/svg">        
-          <path fill="none" fill-rule="evenodd" stroke-linecap="square" stroke="#FFF" stroke-width="3" 
+          <path 
+            fill="none" 
+            fill-rule="evenodd" 
+            stroke-linecap="square" 
+            stroke="#FFF" 
+            stroke-width="3" 
             d="M2527.526 97.474l-16.747 16.747M2527.526 114.22l-16.747-16.746"/>
         </svg>`;
     closeButton.onclick = function () {this.parentNode.parentNode.removeChild(this.parentNode);};
@@ -184,60 +199,71 @@ if (typeof init === "undefined") {
 }
 
 {
-  let meted = document.querySelectorAll("*[data-meted-image-id]")
+  let meted = document.querySelectorAll("*[data-meted]");
   let i = meted.length ;
   
   while (i > 0) {
     i -=1;
+    let host = meted[i].dataset.metedDevEnv ? "http://localhost:5000" : "http://app.meted.co"; // TODO: production!
 
-    if (window.getComputedStyle(meted[i], null).getPropertyValue("position") === "static") {
-      meted[i].style.position = "relative";
-    }
+    let imageId = meted[i].dataset.metedImageId;
+
+    if (window
+          .getComputedStyle(meted[i], null)
+          .getPropertyValue("position") === "static") { meted[i].style.position = "relative";}
+
     meted[i].classList.add("meted");
 
     let canvas = document.createElement("canvas");
     canvas.addEventListener("click", (ev) => {ev.preventDefault();}, true);
     canvas.addEventListener("click", (ev) => {ev.preventDefault(); }, false);
-    canvas.addEventListener("contextmenu", (ev) => {
-      ev.preventDefault();
-    }, false);
+    canvas.addEventListener("contextmenu", (ev) => {ev.preventDefault();}, false);
 
     let ctx = canvas.getContext("2d");
 
     let img = new Image();
+    Promise.all([
+      fetch(`${host}/w/1/${imageId}`, {mode: 'cors', headers: new Headers({'Content-Type': 'application/json'})})
+          .then(response => response.json())
+          .catch(err => console.log(err)),
+      new Promise( (res, rej) => {img.onload = res;})
+    ])
+    .then(([data]) => {
 
-    img.onload = () => {
+      let copyright = document.createElement("figcaption");
+      copyright.className = "meted__copyright";
+      copyright.innerHTML = `
+        <a target="_blank" href="${data.author.url}">Photo</a>
+        by ${data.author.name} /&nbsp;
+        <a target="_blank" href="${data.license.url}">${data.license.shortName}</a>`;
+
+      meted[i].appendChild(copyright);
+
+      let usebutton = document.createElement("button");
+      usebutton.className = "meted__contact";
+      usebutton.innerText = "USE PHOTO";
+      usebutton.addEventListener("click", (ev) => {openDialog(meted[i], data);});
+
+      let hover = document.createElement("div");
+      hover.className = "meted__share-buttons-block";
+      hover.innerHTML = `<a href="mailto:metedapp@gmail.com?subject=Takedown%20photo%20request%20ID3452453" class="meted__share"><svg width="14" height="17" viewBox="11 10 14 17" xmlns="http://www.w3.org/2000/svg">
+  <path d="M24.383 11.318c-.374-.155-.804-.07-1.09.217-1.264 1.263-3.32 1.264-4.586 0-2.045-2.043-5.37-2.043-7.414 0-.188.187-.293.442-.293.707v13c0 .552.447 1 1 1 .553 0 1-.448 1-1V20.69c1.27-.998 3.12-.912 4.293.26 2.045 2.042 5.37 2.042 7.414 0 .188-.19.293-.443.293-.708v-8c0-.405-.244-.77-.617-.924z" fill="#FFF" fill-rule="evenodd" fill-opacity=".75"/>
+</svg></a>`;
+
+      hover.appendChild(usebutton);
+
+      meted[i].appendChild(hover);
+    })
+    .then(() => {
       let {naturalHeight, naturalWidth} = img;
       canvas.height = naturalHeight;
       canvas.width = naturalWidth;
       ctx.drawImage(img, 0, 0);
-    };
+    });
 
-    img.src = `images/${meted[i].dataset.metedImageId}.jpg`;
-    
+    img.src = `${host}/w/1/i/${imageId}/800,600`;
+
     meted[i].appendChild(canvas);
-    // meted[i].innerHTML = `<img src="images/${meted[i].dataset.metedImageId}.jpg"/>`;
-    meted[i].removeAttribute("data-meted-image-id");
-
-
-    let copyright = document.createElement("figcaption");
-    copyright.className = "meted__copyright";
-    copyright.innerHTML = `<a href="#">Photo</a> by James Blacke / <a href="#">CC BY</a>`;
-
-    meted[i].appendChild(copyright);
-
-    let hover = document.createElement("div");
-    hover.className = "meted__share-buttons-block";
-    hover.innerHTML = `<a href="mailto:metedapp@gmail.com?subject=Takedown%20photo%20request%20ID3452453" class="meted__share"><svg width="14" height="17" viewBox="11 10 14 17" xmlns="http://www.w3.org/2000/svg">
-  <path d="M24.383 11.318c-.374-.155-.804-.07-1.09.217-1.264 1.263-3.32 1.264-4.586 0-2.045-2.043-5.37-2.043-7.414 0-.188.187-.293.442-.293.707v13c0 .552.447 1 1 1 .553 0 1-.448 1-1V20.69c1.27-.998 3.12-.912 4.293.26 2.045 2.042 5.37 2.042 7.414 0 .188-.19.293-.443.293-.708v-8c0-.405-.244-.77-.617-.924z" fill="#FFF" fill-rule="evenodd" fill-opacity=".75"/>
-</svg></a>`;
-
-    let usebutton = document.createElement("button");
-    usebutton.className = "meted__contact";
-    usebutton.innerText = "USE PHOTO";
-    usebutton.addEventListener("click", (ev) => {openDialog(meted[i]);});
-    hover.appendChild(usebutton);
-
-    meted[i].appendChild(hover);
+    meted[i].removeAttribute("data-meted");
   }
 }
