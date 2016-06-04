@@ -30,8 +30,7 @@ if (typeof init === "undefined") {
     `;
     var closeButton = document.createElement("div");
     closeButton.className = "meted__close";
-    closeButton.innerHTML = `<svg width="22" height="22" viewBox="2508 95 22 22" xmlns="http://www.w3.org/2000/svg">        
-          <path 
+    closeButton.innerHTML = `<svg width="22" height="22" viewBox="2508 95 22 22" xmlns="http://www.w3.org/2000/svg">        <path 
             fill="none" 
             fill-rule="evenodd" 
             stroke-linecap="square" 
@@ -42,6 +41,10 @@ if (typeof init === "undefined") {
     closeButton.onclick = function () {this.parentNode.parentNode.removeChild(this.parentNode);};
     shareDialog.appendChild(closeButton);
     el.appendChild(shareDialog);
+
+    let text = el.querySelector(".meted__share-code")
+    text.focus();
+    text.select();
   };
 
   var init = true;
@@ -49,6 +52,7 @@ if (typeof init === "undefined") {
   let style = document.createElement("style");
   let css = `
     .meted {}
+    .meted canvas {width: 100%;}
     .meted__copyright {    
       font-family: sans-serif;
       font-size: 13px;
