@@ -45,7 +45,6 @@ class MyPhotos extends React.Component {
                           : activeImg === img && img.riskLevel.score === 3 ? "#FF5359"
                           : "transparent"
              }}>
-           {console.log(img.riskLevel)}
            <div
                style = {{
                   background: img.riskLevel.score === 0 ? "transparent"
