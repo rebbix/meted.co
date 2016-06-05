@@ -96,12 +96,6 @@ class ShareImg extends React.Component {
                 }
               </div>
             </div>
-
-            <p className="share-img__notice">
-              Low risk is: explaing the low risk <br/>
-              Middle risk: explaining the middle risk <br/>
-              High Risk: explaing what is the high risk <br/>
-            </p>
           </div>
         </div>
     )
