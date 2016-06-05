@@ -20393,6 +20393,11 @@
 	  }
 
 	  _createClass(Layout, [{
+	    key: "turnOffMyPhotos",
+	    value: function turnOffMyPhotos() {
+	      this.setState({ myPhotos: false });
+	    }
+	  }, {
 	    key: "toggleMyPhotos",
 	    value: function toggleMyPhotos() {
 	      this.setState({ myPhotos: !this.state.myPhotos });
@@ -20423,7 +20428,7 @@
 	                display: "inline",
 	                opacity: myPhotos ? 0.3 : 1
 	              } },
-	            _react2["default"].createElement(_Search2["default"], null)
+	            _react2["default"].createElement(_Search2["default"], { onFocus: this.turnOffMyPhotos.bind(this) })
 	          ),
 	          _react2["default"].createElement(
 	            "span",
@@ -20531,6 +20536,7 @@
 	          ref: "searchField",
 	          value: this.state.searchString,
 	          onChange: this.search.bind(this),
+	          onFocus: this.props.onFocus,
 	          placeholder: "Search images", type: "text", className: "search__input"
 	        }),
 	        _react2["default"].createElement(
@@ -22317,10 +22323,16 @@
 	              img.riskLevel && _react2["default"].createElement(
 	                "span",
 	                null,
+	                console.log(img.riskLevel),
 	                ": ",
 	                _react2["default"].createElement(
 	                  "a",
-	                  { href: "#", title: img.riskLevel.explanation },
+	                  { href: "#",
+	                    title: img.riskLevel.explanation,
+	                    style: {
+	                      color: img.riskLevel.score === 0 ? "transparent" : img.riskLevel.score === 1 ? "#00FF9B" : img.riskLevel.score === 2 ? "#FFDA18" : img.riskLevel.score === 3 ? "#FF5359" : "transparent"
+	                    }
+	                  },
 	                  img.riskLevel.text
 	                )
 	              )
