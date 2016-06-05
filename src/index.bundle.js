@@ -22439,7 +22439,6 @@
 	              style: {
 	                borderColor: activeImg === img && img.riskLevel.score === 0 ? "transparent" : activeImg === img && img.riskLevel.score === 1 ? "#00FF9B" : activeImg === img && img.riskLevel.score === 2 ? "#FFB818" : activeImg === img && img.riskLevel.score === 3 ? "#FF5359" : "transparent"
 	              } },
-	            console.log(img.riskLevel),
 	            _react2["default"].createElement(
 	              "div",
 	              {
