@@ -10,10 +10,10 @@ if (typeof init === "undefined") {
       <div class="meted__share-dialog-content">
         <h4 class="meted__share-title">Use this photo on your site with meted.co</h4>
         <p class="meted__share-description">Reduce any possible legal issues by using this code</p>
-
-        <textarea class="meted__share-code"><figure data-meted="true" data-meted-image-id="${imageId}"><script src="${widgetURL}"></script></figure></textarea>
-        <br/>
-        <button class="meted__copy-button">COPY CODE</button>
+        ${data.riskLevel.score !== 3 ? 
+          `<textarea class="meted__share-code"><figure data-meted="true" data-meted-image-id="${imageId}"><script src="${widgetURL}"></script></figure></textarea><br/><button class="meted__copy-button">COPY CODE</button>`
+          : ""
+        }
 
         <ul class="meted__advantages">
           <li class="meted__advantage">Network takedown tracking</li>
@@ -23,7 +23,12 @@ if (typeof init === "undefined") {
           </li>
           <li class="meted__advantage">
             Usage risk tracking:&nbsp;
-            <a target="_blank" href="#">${data.riskLevel.text}</a>
+            <a target="_blank" href="#"
+              style="color:${data.riskLevel.score === 0 ? "transparent"
+                           : data.riskLevel.score === 1 ? "#00FF9B"
+                           : data.riskLevel.score === 2 ? "#FFDA18"
+                           : data.riskLevel.score === 3 ? "#FF5359"
+                           : "transparent"}">${data.riskLevel.text}</a>
           </li>
         </ul>
       </div>
