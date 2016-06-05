@@ -22323,7 +22323,6 @@
 	              img.riskLevel && _react2["default"].createElement(
 	                "span",
 	                null,
-	                console.log(img.riskLevel),
 	                ": ",
 	                _react2["default"].createElement(
 	                  "a",

@@ -78,7 +78,7 @@ class ShareImg extends React.Component {
                 {icon}
                 Usage risk tracking
                 {img.riskLevel &&
-                  <span>{console.log(img.riskLevel )}
+                  <span>
                     :&nbsp;
                     <a href="#"
                        title={img.riskLevel.explanation}
