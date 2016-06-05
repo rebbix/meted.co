@@ -56,6 +56,7 @@ if (typeof init === "undefined") {
 
   let style = document.createElement("style");
   let css = `
+
     .meted {}
     .meted canvas {width: 100%;}
     .meted__copyright {
@@ -124,10 +125,13 @@ if (typeof init === "undefined") {
       color: white;
       font-family: sans-serif;
       text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .meted__share-title {
-      font-size: 30px;
+      font-size: 24px;
       color: #FFFFFF;
       letter-spacing: -0.15px;
       margin: 0 0 0 0;
@@ -135,15 +139,15 @@ if (typeof init === "undefined") {
 
     .meted__share-description {
       opacity: 0.8;
-      font-size: 20px;
+      font-size: 15px;
       letter-spacing: -0.1px;
     }
 
     .meted__share-code {
       border-radius: 4px;
       background: white;
-      height: 75px;
-      width: 352px;
+      height: 50px;
+      width: 360px;
 
       font-size: 12px;
       color: #666666;
@@ -162,7 +166,7 @@ if (typeof init === "undefined") {
     }
 
     .meted__copy-button {
-      line-height: 48px;
+      line-height: 40px;
       background: #00FF9B;
       border-radius: 4px;
       color: #000000;
@@ -171,7 +175,7 @@ if (typeof init === "undefined") {
       margin-top: 5px;
       font-weight: bold;
       font-size: 15px;
-      width: 380px;
+      width: 390px;
     }
 
     .meted__advantages {
@@ -181,10 +185,10 @@ if (typeof init === "undefined") {
       margin-top: 30px;
       letter-spacing: -0.09px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 15px;
     }
 
-    .meted__advantage  {margin: 13px 0;}
+    .meted__advantage  {margin: 7px 0;}
 
     .meted__advantage a {
       color: #00FF9B;
@@ -192,13 +196,11 @@ if (typeof init === "undefined") {
     }
 
     .meted__share-dialog-content {
-      position: absolute;
-      right: 0;
-      left: 0;
-      top: 50%;
-      margin-top: -184px;
+      /*!  */
+      /*!  */
+      /*!  */
+      /*!  */
     }
-
   `;
   style.type = 'text/css';
   // style.styleSheet.cssText = css;
